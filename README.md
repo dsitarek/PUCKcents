@@ -1,4 +1,4 @@
-# Hockey App
+# NETworth
 
 ## User Stories
 - As a user, I should be able to login with google.
