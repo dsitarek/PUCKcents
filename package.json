@@ -1,10 +1,12 @@
 {
-  "name": "react-template-2021",
+  "name": "hockey-battles",
+  "author": "Daniel Sitarek",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.14.0",
     "@popperjs/core": "^2.9.3",
+    "@supabase/supabase-js": "^1.28.5",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
     "firebase": "^8.2.0",

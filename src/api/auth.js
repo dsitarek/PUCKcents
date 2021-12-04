@@ -1,12 +1,21 @@
-import firebase from 'firebase/app';
+import { createClient } from '@supabase/supabase-js';
 
-// These helpers allow you to login and out of FB auth with Google. These are Firebase methods and is broilerplate code.
+const supabase = createClient(process.env.REACT_APP_DATABASE_URL, process.env.REACT_APP_API_KEY);
 
-const signInUser = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider);
+const signInUser = async () => {
+  await supabase.auth.signIn({
+    provider: 'google',
+  });
 };
-const signOutUser = () => new Promise((resolve, reject) => {
-  firebase.auth().signOut().then(resolve).catch(reject);
-});
-export { signInUser, signOutUser };
+
+const signOutUser = async () => {
+  await supabase.auth.signOut();
+};
+
+const getUser = () => supabase.auth.user();
+
+const getSession = supabase.auth.session();
+
+export {
+  supabase, signInUser, signOutUser, getUser, getSession,
+};
