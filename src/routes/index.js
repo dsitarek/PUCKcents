@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Authenticated from '../views/Authenticated';
+import { PlayerDetails } from '../views/index';
 
 export default function Routes() {
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <Authenticated />
+        <Route path="/playerdetails/8476887">
+          <PlayerDetails />
         </Route>
       </Switch>
     </>
