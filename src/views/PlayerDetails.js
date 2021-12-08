@@ -15,13 +15,13 @@ export default function PlayerDetails() {
   const [currentStats, setCurrentStats] = useState({});
   const [currentInfo, setCurrentInfo] = useState({});
   const [recentGames, setRecentGames] = useState([]);
-  const playerId = 8474600;
+  const playerId = 8477424;
   const playerImgURL = `https://images.weserv.nl/?url=nhl.bamcontent.com/images/headshots/current/168x168/${playerId}.jpg`;
 
   useEffect(() => {
-    if (playerDetails.name) document.title = `${playerDetails.name} Details`;
+    if (currentInfo.fullName) document.title = `${currentInfo.fullName} Details`;
     else document.title = 'Loading';
-  }, [playerDetails]);
+  }, [currentInfo]);
 
   useEffect(() => {
     getCurrentStats(playerId).then(setCurrentStats);
@@ -48,14 +48,14 @@ export default function PlayerDetails() {
   return (
     <div className="details-container">
       <h3>{playerDetails.name}</h3>
-      {playerDetails.position === 'Forward' ? <CurrentForwardCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
-      {playerDetails.position === 'Defenseman' ? <CurrentDefenseCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
-      {playerDetails.position === 'Goalie' ? <CurrentGoalieCard currentStats={currentStats} currentInfo={currentInfo} roundNum={roundNum} playerImgURL={playerImgURL} /> : ''}
-      {!playerDetails.id ? 'Loading' : ''}
+      {currentInfo.primaryPosition?.abbreviation === 'C' || currentInfo.primaryPosition?.abbreviation === 'L' || currentInfo.primaryPosition?.abbreviation === 'R' ? <CurrentForwardCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
+      {currentInfo.primaryPosition?.abbreviation === 'D' ? <CurrentDefenseCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
+      {currentInfo.primaryPosition?.abbreviation === 'G' ? <CurrentGoalieCard currentStats={currentStats} currentInfo={currentInfo} roundNum={roundNum} playerImgURL={playerImgURL} /> : ''}
+      {!currentInfo.primaryPosition?.abbreviation ? 'Loading' : ''}
 
       <span className="recent-games-header">Recent Games</span>
       <div className="recent-games-container">
-        {recentGames.map((game) => <RecentGamesInfo key={game.game.gamePk} game={game} position={currentInfo.primaryPosition.code} />)}
+        {recentGames.map((game) => <RecentGamesInfo key={game.game.gamePk} game={game} position={currentInfo.primaryPosition?.abbreviation} />)}
       </div>
       <div className="past-season-stats-container">
         <div className="past-season-stats-header">
