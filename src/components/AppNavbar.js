@@ -12,7 +12,8 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import { signOutUser, getUser } from '../api/auth';
+import { signOutUser, getUser, signInUser } from '../api/auth';
+import signInButton from '../assets/btn_google_signin_light_normal_web.png';
 
 const AppNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,16 +31,20 @@ const AppNavbar = () => {
             <NavItem>
               <NavLink href="/playerdetails/8476887">details</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar className="user-drop">
-              <DropdownToggle nav caret>
-                <img className="user-img" src={user.user_metadata.picture} alt="user" />{user.user_metadata.name}
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>
-                  <NavLink onClick={signOutUser}>Sign Out</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            {user ? (
+              <>
+                <UncontrolledDropdown nav inNavbar className="user-drop">
+                  <DropdownToggle nav caret>
+                    <img className="user-img" src={user.user_metadata.picture} alt="user" />{user?.user_metadata.name}
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <NavLink onClick={signOutUser}>Sign Out</NavLink>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </>
+            ) : <><button type="button" className="login-btn" onClick={signInUser}><img src={signInButton} alt="sign in" /></button></>}
           </Nav>
         </Collapse>
       </Navbar>
