@@ -9,3 +9,57 @@ body {
   background-color: #50596988;
   color: black;
 }
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.past-season-stats-container {
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+}
+
+.past-season-stats-header {
+  display: flex;
+}
+
+.year-dropdown {
+  margin-right: 0;
+  margin-left: auto;
+  max-width: 8em;
+}
+
+.past-details-card li {
+  list-style-type: none;
+}
+
+.details-current-header {
+  display: flex;
+  align-items: center;
+}
+
+.recent-games-container {
+  display: flex;
+  justify-content: center;
+}
+
+.recent-game-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: .25em;
+  padding: .25em;
+  text-align: center;
+  width: 20em;
+}
+
+.recent-game-stats ul {
+  list-style-type: none;
+  margin-left: -2em;
+}
+
+.recent-games-header {
+  align-self: center;
+}
