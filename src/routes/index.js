@@ -6,7 +6,7 @@ export default function Routes() {
   return (
     <>
       <Switch>
-        <Route path="/">
+        <Route path="/playerSearch">
           <PlayerSearch />
         </Route>
         <Route path="/playerdetails/:playerId">
