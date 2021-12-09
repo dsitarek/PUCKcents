@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import getPlayerDetails from '../data/databaseCalls';
 import {
   ForwardDetailsCard, DefenseDetailsCard, GoalieDetailsCard, CurrentGoalieCard, CurrentDefenseCard, CurrentForwardCard,
@@ -15,7 +15,7 @@ export default function PlayerDetails() {
   const [currentStats, setCurrentStats] = useState({});
   const [currentInfo, setCurrentInfo] = useState({});
   const [recentGames, setRecentGames] = useState([]);
-  const playerId = 8477424;
+  const { playerId } = useParams();
   const playerImgURL = `https://images.weserv.nl/?url=nhl.bamcontent.com/images/headshots/current/168x168/${playerId}.jpg`;
 
   useEffect(() => {
@@ -44,11 +44,10 @@ export default function PlayerDetails() {
     }
     return Math.round(num * exp) / exp;
   };
-
   return (
     <div className="details-container">
       <h3>{playerDetails.name}</h3>
-      {currentInfo.primaryPosition?.abbreviation === 'C' || currentInfo.primaryPosition?.abbreviation === 'L' || currentInfo.primaryPosition?.abbreviation === 'R' ? <CurrentForwardCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
+      {currentInfo.primaryPosition?.abbreviation === 'C' || currentInfo.primaryPosition?.abbreviation === 'LW' || currentInfo.primaryPosition?.abbreviation === 'RW' ? <CurrentForwardCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
       {currentInfo.primaryPosition?.abbreviation === 'D' ? <CurrentDefenseCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
       {currentInfo.primaryPosition?.abbreviation === 'G' ? <CurrentGoalieCard currentStats={currentStats} currentInfo={currentInfo} roundNum={roundNum} playerImgURL={playerImgURL} /> : ''}
       {!currentInfo.primaryPosition?.abbreviation ? 'Loading' : ''}

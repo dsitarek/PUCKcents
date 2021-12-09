@@ -5,3 +5,4 @@ export { default as GoalieDetailsCard } from './GoalieDetailsCard';
 export { default as CurrentGoalieCard } from './CurrentGoalieCard';
 export { default as CurrentDefenseCard } from './CurrentDefenseCard';
 export { default as CurrentForwardCard } from './CurrentForwardCard';
+export { default as SearchList } from './SearchList';
