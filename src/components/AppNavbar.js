@@ -29,7 +29,7 @@ const AppNavbar = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="container-fluid" navbar>
             <NavItem>
-              <NavLink href="/playerdetails/8476887">details</NavLink>
+              <NavLink href="/playerSearch">Search Players</NavLink>
             </NavItem>
             {user ? (
               <>

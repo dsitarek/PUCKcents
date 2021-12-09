@@ -4,12 +4,23 @@ const statsApi = 'https://statsapi.web.nhl.com/api/v1';
 
 const currentSeason = '20212022';
 
-// const getSearchedPlayers = async (userSearch) => {
-//   const search = userSearch.replace(/\s/g, '%20');
-//   const searchCall = axios.get(`https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/${search}`);
-// };
+const getSearchedPlayers = async (userSearch) => {
+  const search = userSearch.replace(/\s/g, '%20');
+  const searchCall = await axios.get(`https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/${search}`);
+  const searchedPlayerReturn = [];
+  const playerDataArr = (searchCall.data.suggestions).map((player) => player.split('|'));
+  playerDataArr.forEach((player) => searchedPlayerReturn.push({
+    id: player[0],
+    name: `${player[2]} ${player[1]}`,
+    team: player[11],
+    position: player[12],
+    playerNumber: player[13],
+  }));
 
-// export default getSearchedPlayers;
+  return searchedPlayerReturn;
+};
+
+export default getSearchedPlayers;
 
 const getCurrentStats = async (playerId) => {
   const call = await axios.get(`${statsApi}/people/${playerId}/stats?stats=statsSingleSeason&season=${currentSeason}`);
@@ -26,4 +37,6 @@ const getRecentGames = async (playerId) => {
   return [gameIndex[0], gameIndex[1], gameIndex[2]];
 };
 
-export { getCurrentStats, getCurrentInfo, getRecentGames };
+export {
+  getCurrentStats, getCurrentInfo, getRecentGames, getSearchedPlayers,
+};
