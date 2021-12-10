@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import getPlayerDetails from '../data/databaseCalls';
+import { getPlayerDetails } from '../data/databaseCalls';
 import {
   ForwardDetailsCard, DefenseDetailsCard, GoalieDetailsCard, CurrentGoalieCard, CurrentDefenseCard, CurrentForwardCard,
 } from '../components/index';

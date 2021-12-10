@@ -24,4 +24,13 @@ const getPlayerDetails = async (id, year) => {
   return { ...data[0], ...salaryData[0] };
 };
 
-export default getPlayerDetails;
+const getLines = async (userId) => {
+  const linesCall = await supabase
+    .from('line_combinations')
+    .select('*')
+    .eq('user_id', userId);
+
+  return linesCall.data;
+};
+
+export { getPlayerDetails, getLines };

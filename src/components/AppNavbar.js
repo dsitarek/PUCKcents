@@ -24,12 +24,15 @@ const AppNavbar = () => {
   return (
     <div>
       <Navbar light expand="md" className="navbar">
-        <NavbarBrand href="/">hello</NavbarBrand>
+        <NavbarBrand href="/">Hockey App</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="container-fluid" navbar>
             <NavItem>
               <NavLink href="/playerSearch">Search Players</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/">My Lines</NavLink>
             </NavItem>
             {user ? (
               <>
