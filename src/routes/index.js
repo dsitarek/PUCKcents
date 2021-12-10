@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { PlayerDetails, PlayerSearch } from '../views/index';
+import { Lines, PlayerDetails, PlayerSearch } from '../views/index';
 
 export default function Routes() {
   return (
@@ -11,6 +11,9 @@ export default function Routes() {
         </Route>
         <Route path="/playerdetails/:playerId">
           <PlayerDetails />
+        </Route>
+        <Route exact path="/">
+          <Lines />
         </Route>
       </Switch>
     </>
