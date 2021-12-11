@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { getPlayerSeasons } from '../data/databaseCalls';
 
 export default function SearchList({ player, addPlayer }) {
   const [formInput, setFormInput] = useState({
-    year: '2020-2021',
+    year: '',
+    position: '',
   });
+
+  const [playerSeasons, setPlayerSeasons] = useState(null);
+
+  const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
+    if (!accumulator.find((obj) => obj[prop] === currentValue[prop])) {
+      accumulator.push(currentValue);
+    }
+    return accumulator;
+  }, []);
+
+  useEffect(() => {
+    if (player.position === 'L') formInput.position = 'LW';
+    else if (player.position === 'D') formInput.position = 'D1';
+    else if (player.position === 'G') formInput.position = 'G';
+    getPlayerSeasons(player.id).then((years) => {
+      const uniqueYearList = removeDuplicatesFromArrayByProperty(years, 'yearid');
+      setPlayerSeasons(uniqueYearList);
+      formInput.year = years[0]?.yearid;
+    });
+  }, [player]);
+
   const handleChange = (e) => {
     setFormInput((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
@@ -17,18 +40,34 @@ export default function SearchList({ player, addPlayer }) {
       <span className="search-card-span">{player.team}</span>
       <span className="search-card-span">{player.position}</span>
       <select id="year" name="year" className="form-select year-dropdown" aria-label="Default select example" value={formInput.year} onChange={handleChange}>
-        <option value="2020-2021">20-21</option>
-        <option value="2019-2020">19-20</option>
-        <option value="2018-2019">18-19</option>
-        <option value="2017-2018">17-18</option>
-        <option value="2016-2017">16-17</option>
-        <option value="2015-2016">15-16</option>
-        <option value="2014-2015">14-15</option>
-        <option value="2013-2014">13-14</option>
-        <option value="2012-2013">12-13</option>
-        <option value="2011-2012">11-12</option>
+        {playerSeasons ? playerSeasons.map((year) => <option key={`${player.name}-${year.yearid}`} value={year.yearid}>{year.yearid}</option>) : ''}
       </select>
-      <button className="btn btn-primary" type="button" onClick={addPlayer}>Add</button>
+      <select id="position" name="position" className="form-select pos-dropdown" aria-label="Default select example" value={formInput.position} onChange={handleChange}>
+        {player.position === 'D'
+          ? (
+            <>
+              <option value="D1">LD</option>
+              <option value="D2">RD</option>
+            </>
+          ) : ''}
+        {player.position === 'L' || player.position === 'C' || player.position === 'R'
+          ? (
+            <>
+              <option value="LW">LW</option>
+              <option value="C">C</option>
+              <option value="RW">RW</option>
+
+            </>
+          ) : ''}
+        {player.position === 'G'
+          ? (
+            <>
+              <option value="G">G</option>
+            </>
+          ) : ''}
+
+      </select>
+      <button className="btn btn-primary" type="button" onClick={() => addPlayer(formInput.position, Number(player.id), formInput.year)}>Add</button>
     </div>
   );
 }
@@ -37,3 +76,5 @@ SearchList.propTypes = {
   player: PropTypes.shape().isRequired,
   addPlayer: PropTypes.func.isRequired,
 };
+
+// dont show blank year players

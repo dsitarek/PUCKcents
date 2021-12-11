@@ -138,11 +138,12 @@ body {
   display: flex;
   justify-content: center;
   border: 1px solid black;
+  width: 100%;
 }
 
 .line-details-forwards, .line-details-defenseman, .line-details-goalie {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .line-details-container > .search-card-header {
@@ -151,5 +152,38 @@ body {
 
 .line-edit-container {
   display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.line-details-card {
+  margin-top: .5em;
+}
+
+.line-position-card {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 6em;
+  height: 8em;
+  text-align: center;
+  border: 1px solid black;
+  margin: .25em;
+}
+
+.line-search .line {
+  width: 100%;
+}
+
+.line-details-img-container {
+  width: 100%;
+}
+
+.line-details-img {
+  width: 100%;
+}
+
+.line-position-card {
+  height: 9em;
 }

@@ -10,12 +10,12 @@ export default function lineCard({ line }) {
   return (
     <div className="line-card" onClick={pushToLine} onKeyUp={(event) => { if (event.key === 'Enter') pushToLine(); }} role="button" tabIndex="0">
       <span className="line-title">{line.name}</span>
-      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.LW)} alt={line.LW} /></div>
-      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.C)} alt={line.C} /></div>
-      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.RW)} alt={line.RW} /></div>
-      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D1)} alt={line.D1} /></div>
-      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D2)} alt={line.D2} /></div>
-      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.G)} alt={line.G} /></div>
+      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.LW.id)} alt={line.LW.id} /></div>
+      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.C.id)} alt={line.C.id} /></div>
+      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.RW.id)} alt={line.RW.id} /></div>
+      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D1.id)} alt={line.D1.id} /></div>
+      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D2.id)} alt={line.D2.id} /></div>
+      <div className="line-img-container"><img className="line-img" src={getplayerImg(line.G.id)} alt={line.G.id} /></div>
     </div>
   );
 }

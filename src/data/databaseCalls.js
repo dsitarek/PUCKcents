@@ -20,7 +20,7 @@ const getPlayerDetails = async (id, year) => {
 
   const salaryData = await getSalaryData(id, year);
   if (data.length > 1) data[0].team = `${data[0].team} / ${data[1].team}`;
-  console.log(data[0].team);
+  console.log(data, id, year);
 
   if (error) console.warn(error);
   return { ...data[0], ...salaryData[0] };
@@ -44,4 +44,14 @@ const getSingleLine = async (lineId) => {
   return linesCall.data[0];
 };
 
-export { getPlayerDetails, getLines, getSingleLine };
+const getPlayerSeasons = async (playerId) => {
+  const { data } = await supabase
+    .from('stats_with_grades')
+    .select('yearid')
+    .eq('id', playerId);
+  return data;
+};
+
+export {
+  getPlayerDetails, getLines, getSingleLine, getPlayerSeasons,
+};
