@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default function ForwardDetailsCard({ playerDetails, roundNum }) {
   return (
     <div className="past-details-card">
+      <li><b>Team:</b> {playerDetails.team}</li>
       <li><b>Games:</b> {playerDetails.games}</li>
       <li><b>Games Started:</b> {playerDetails.games_started}</li>
       <li><b>Goals:</b> {playerDetails.goals}</li>

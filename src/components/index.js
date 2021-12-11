@@ -6,4 +6,5 @@ export { default as CurrentGoalieCard } from './CurrentGoalieCard';
 export { default as CurrentDefenseCard } from './CurrentDefenseCard';
 export { default as CurrentForwardCard } from './CurrentForwardCard';
 export { default as SearchList } from './SearchList';
+export { default as LineSearchList } from './LineSearchList';
 export { default as LineCard } from './LineCard';

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 export default function lineCard({ line }) {
   const getplayerImg = (id) => `https://images.weserv.nl/?url=nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg`;
   const history = useHistory();
-  const pushToLine = () => history.push(`/lineManagement/${line.id}`);
+  const pushToLine = () => history.push(`/LineManagement/${line.line_id}`);
 
   return (
     <div className="line-card" onClick={pushToLine} onKeyUp={(event) => { if (event.key === 'Enter') pushToLine(); }} role="button" tabIndex="0">

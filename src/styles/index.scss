@@ -133,3 +133,23 @@ body {
   border: 1px transparent;
   border-radius: 6px;
 }
+
+.line-management-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.line-details-forwards, .line-details-defenseman, .line-details-goalie {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.line-details-container > .search-card-header {
+  color: red;
+}
+
+.line-edit-container {
+  display: flex;
+  flex-direction: column;
+}

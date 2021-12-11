@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default function GoalieDetailsCard({ playerDetails, roundNum }) {
   return (
     <div className="past-details-card">
+      <li><b>Team:</b> {playerDetails.team}</li>
       <li><b>Games:</b> {playerDetails.games}</li>
       <li><b>Wins:</b> {playerDetails.wins}</li>
       <li><b>Losses:</b> {playerDetails.losses}</li>
