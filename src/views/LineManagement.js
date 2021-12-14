@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getSingleLine, createLine } from '../data/databaseCalls';
+import { getSingleLine, createLine, updateLine } from '../data/databaseCalls';
 import { getUser } from '../api/auth';
 import LineDetailsCard from '../components/LineDetailsCard';
 import { getSearchedPlayers } from '../data/nhlCalls';
@@ -56,6 +56,11 @@ export default function LineManagement() {
       createLine(line).then((data) => history.push(`/LineManagement/${data[0].line_id}`));
     } else setBtnText('Please Complete Line');
   };
+
+  const changeLine = async () => {
+    updateLine(line, line.line_id);
+  };
+
   if (line.user_id === user.id) {
     return (
       <div className="line-management-container">
@@ -71,7 +76,8 @@ export default function LineManagement() {
             {searchedPlayers ? searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />) : ''}
           </div>
         </div>
-        {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button> : ''}
+        {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button>
+          : <button className="btn btn-success" type="button" onClick={changeLine}>Update</button>}
       </div>
     );
   } return (<>This line belongs to another user</>);

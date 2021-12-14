@@ -58,6 +58,22 @@ const createLine = async (lineObj) => {
   return data || error;
 };
 
+const deleteLine = async (lineId) => {
+  const { data, error } = await supabase
+    .from('line_combinations')
+    .delete()
+    .eq('line_id', lineId);
+  return data || error;
+};
+
+const updateLine = async (updateObj, lineId) => {
+  const { data, error } = await supabase
+    .from('line_combinations')
+    .update(updateObj)
+    .eq('line_id', lineId);
+  return data || error;
+};
+
 export {
-  getPlayerDetails, getLines, getSingleLine, getPlayerSeasons, createLine,
+  getPlayerDetails, getLines, getSingleLine, getPlayerSeasons, createLine, deleteLine, updateLine,
 };
