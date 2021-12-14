@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getSingleLine } from '../data/databaseCalls';
+import { useParams, useHistory } from 'react-router-dom';
+import { getSingleLine, createLine } from '../data/databaseCalls';
 import { getUser } from '../api/auth';
 import LineDetailsCard from '../components/LineDetailsCard';
 import { getSearchedPlayers } from '../data/nhlCalls';
@@ -11,11 +11,12 @@ export default function LineManagement() {
   const [btnText, setBtnText] = useState('Save');
   const { lineId } = useParams();
   const user = getUser();
+  const history = useHistory();
 
   useEffect(() => {
     if (lineId === 'create') {
       setLine({
-        name: '',
+        name: 'test',
         user_id: user.id,
         LW: null,
         C: null,
@@ -23,6 +24,7 @@ export default function LineManagement() {
         D1: null,
         D2: null,
         G: null,
+        public: false,
       });
     } else { getSingleLine(lineId).then(setLine); }
   }, []);
@@ -32,6 +34,10 @@ export default function LineManagement() {
 
   const handleChange = (e) => {
     setFormInput((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
+
+  const handleName = (e) => {
+    setLine((prevState) => ({ ...prevState, name: e.target.value }));
   };
 
   const returnSearch = async (e) => {
@@ -47,12 +53,13 @@ export default function LineManagement() {
 
   const saveLine = async () => {
     if (line.LW?.id && line.RW?.id && line.C?.id && line.D1?.id && line.D2?.id && line.G?.id) {
-      setBtnText('good');
-    } else setBtnText('bad');
+      createLine(line).then((data) => history.push(`/LineManagement/${data[0].line_id}`));
+    } else setBtnText('Please Complete Line');
   };
   if (line.user_id === user.id) {
     return (
       <div className="line-management-container">
+        {lineId === 'create' ? <div><input type="text" className="create-line-name" name="name" onChange={handleName} /></div> : ''}
         <div className="line-edit-container">
           <LineDetailsCard line={line} />
           <div className="line-search line">

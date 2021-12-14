@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { supabase } from '../api/auth';
 
 const statsApi = 'https://statsapi.web.nhl.com/api/v1';
 
@@ -19,6 +20,14 @@ const getSearchedPlayers = async (userSearch) => {
 
   return searchedPlayerReturn;
 };
+
+// const getSearchedPlayers = async () => {
+//   const { data } = await supabase
+//     .from('stats_with_grades')
+//     .select()
+//     .textSearch('name', 'juuse');
+//   console.log(data);
+// };
 
 export default getSearchedPlayers;
 
