@@ -1,17 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getPlayerDetails } from '../data/databaseCalls';
 
-export default function LineDetailsCard({ line }) {
-  const [lineInfo, setLineInfo] = useState({
-    LW: null,
-    C: null,
-    RW: null,
-    D1: null,
-    D2: null,
-    G: null,
-  });
-
+export default function LineDetailsCard({ line, lineInfo, setLineInfo }) {
   useEffect(() => {
     if (line.RW?.id) getPlayerDetails(line.RW.id, line.RW.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, RW: playerObj })));
   }, [line.RW]);
@@ -76,4 +67,6 @@ export default function LineDetailsCard({ line }) {
 
 LineDetailsCard.propTypes = {
   line: PropTypes.shape().isRequired,
+  lineInfo: PropTypes.shape().isRequired,
+  setLineInfo: PropTypes.func.isRequired,
 };

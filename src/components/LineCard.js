@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { deleteLine } from '../data/databaseCalls';
+import { deleteLine, getLines } from '../data/databaseCalls';
+import { getUser } from '../api/auth';
 
-export default function lineCard({ line }) {
+export default function lineCard({ line, setLines }) {
   const getplayerImg = (id) => `https://images.weserv.nl/?url=nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg`;
   const history = useHistory();
   const pushToLine = () => history.push(`/LineManagement/${line.line_id}`);
+
+  const removeLine = async () => {
+    const userId = getUser();
+    await deleteLine(line.line_id);
+    getLines(userId.id).then(setLines);
+  };
 
   return (
     <div className="line-card">
@@ -19,11 +26,12 @@ export default function lineCard({ line }) {
         <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D2.id)} alt={line.D2.id} /></div>
         <div className="line-img-container"><img className="line-img" src={getplayerImg(line.G.id)} alt={line.G.id} /></div>
       </div>
-      <div className="line-delete-btn-container"><button className="btn btn-danger" type="button" onClick={() => deleteLine(line.line_id)}>Delete</button></div>
+      <div className="line-delete-btn-container"><button className="btn btn-danger" type="button" onClick={removeLine}>Delete</button></div>
     </div>
   );
 }
 
 lineCard.propTypes = {
   line: PropTypes.shape().isRequired,
+  setLines: PropTypes.func.isRequired,
 };

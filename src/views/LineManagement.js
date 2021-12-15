@@ -9,6 +9,16 @@ import { LineSearchList } from '../components';
 export default function LineManagement() {
   const [line, setLine] = useState({});
   const [btnText, setBtnText] = useState('Save');
+
+  const [lineInfo, setLineInfo] = useState({
+    LW: null,
+    C: null,
+    RW: null,
+    D1: null,
+    D2: null,
+    G: null,
+  });
+
   const { lineId } = useParams();
   const user = getUser();
   const history = useHistory();
@@ -58,7 +68,7 @@ export default function LineManagement() {
   };
 
   const changeLine = async () => {
-    updateLine(line, line.line_id);
+    updateLine(line, lineId);
   };
 
   if (line.user_id === user.id) {
@@ -66,7 +76,7 @@ export default function LineManagement() {
       <div className="line-management-container">
         {lineId === 'create' ? <div><input type="text" className="create-line-name" name="name" onChange={handleName} /></div> : ''}
         <div className="line-edit-container">
-          <LineDetailsCard line={line} />
+          <LineDetailsCard line={line} lineInfo={lineInfo} setLineInfo={setLineInfo} />
           <div className="line-search line">
             <form onSubmit={returnSearch} className="seach-form line">
               <div className="search-bar-container"><input type="text" name="search" className="search-bar line" value={formInput.search} onChange={handleChange} tabIndex="0" />
