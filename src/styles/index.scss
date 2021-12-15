@@ -123,6 +123,13 @@ body {
   margin-top: .5em;
 }
 
+.line-card-items {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
 .line-img-container, .line-title {
   width: 100%;
   text-align: center;
@@ -132,4 +139,58 @@ body {
   height: 5em;
   border: 1px transparent;
   border-radius: 6px;
+}
+
+.line-management-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.line-details-forwards, .line-details-defenseman, .line-details-goalie {
+  display: flex;
+  justify-content: center;
+}
+
+.line-details-container > .search-card-header {
+  color: red;
+}
+
+.line-edit-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.line-details-card {
+  margin-top: .5em;
+}
+
+.line-position-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 6em;
+  height: 8em;
+  text-align: center;
+  border: 1px solid black;
+  margin: .25em;
+}
+
+.line-search .line {
+  width: 100%;
+}
+
+.line-details-img-container {
+  width: 100%;
+}
+
+.line-details-img {
+  width: 100%;
+}
+
+.line-position-card {
+  height: 9em;
 }
