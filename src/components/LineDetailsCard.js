@@ -1,32 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { getPlayerDetails } from '../data/databaseCalls';
 
-export default function LineDetailsCard({ line, lineInfo, setLineInfo }) {
-  useEffect(() => {
-    if (line.RW?.id) getPlayerDetails(line.RW.id, line.RW.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, RW: playerObj })));
-  }, [line.RW]);
-
-  useEffect(() => {
-    if (line.C?.id) getPlayerDetails(line.C.id, line.C.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, C: playerObj })));
-  }, [line.C]);
-
-  useEffect(() => {
-    if (line.LW?.id) getPlayerDetails(line.LW.id, line.LW.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, LW: playerObj })));
-  }, [line.LW]);
-
-  useEffect(() => {
-    if (line.D1?.id) getPlayerDetails(line.D1.id, line.D1.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, D1: playerObj })));
-  }, [line.D1]);
-
-  useEffect(() => {
-    if (line.D2?.id) getPlayerDetails(line.D2.id, line.D2.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, D2: playerObj })));
-  }, [line.D2]);
-
-  useEffect(() => {
-    if (line.G?.id) getPlayerDetails(line.G.id, line.G.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, G: playerObj })));
-  }, [line.G]);
-
+export default function LineDetailsCard({ lineInfo }) {
   const getplayerImg = (id) => `https://images.weserv.nl/?url=nhl.bamcontent.com/images/headshots/current/168x168/${id}.jpg`;
 
   return (
@@ -66,7 +41,5 @@ export default function LineDetailsCard({ line, lineInfo, setLineInfo }) {
 }
 
 LineDetailsCard.propTypes = {
-  line: PropTypes.shape().isRequired,
   lineInfo: PropTypes.shape().isRequired,
-  setLineInfo: PropTypes.func.isRequired,
 };

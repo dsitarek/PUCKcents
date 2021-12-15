@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getSingleLine, createLine, updateLine } from '../data/databaseCalls';
+import {
+  getSingleLine, createLine, updateLine, getPlayerDetails,
+} from '../data/databaseCalls';
 import { getUser } from '../api/auth';
 import LineDetailsCard from '../components/LineDetailsCard';
 import { getSearchedPlayers } from '../data/nhlCalls';
-import { LineSearchList } from '../components';
+import { LineSearchList, LineStatsCard } from '../components';
 
 export default function LineManagement() {
   const [line, setLine] = useState({});
@@ -38,6 +40,30 @@ export default function LineManagement() {
       });
     } else { getSingleLine(lineId).then(setLine); }
   }, []);
+
+  useEffect(() => {
+    if (line.RW?.id) getPlayerDetails(line.RW.id, line.RW.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, RW: playerObj })));
+  }, [line.RW]);
+
+  useEffect(() => {
+    if (line.C?.id) getPlayerDetails(line.C.id, line.C.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, C: playerObj })));
+  }, [line.C]);
+
+  useEffect(() => {
+    if (line.LW?.id) getPlayerDetails(line.LW.id, line.LW.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, LW: playerObj })));
+  }, [line.LW]);
+
+  useEffect(() => {
+    if (line.D1?.id) getPlayerDetails(line.D1.id, line.D1.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, D1: playerObj })));
+  }, [line.D1]);
+
+  useEffect(() => {
+    if (line.D2?.id) getPlayerDetails(line.D2.id, line.D2.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, D2: playerObj })));
+  }, [line.D2]);
+
+  useEffect(() => {
+    if (line.G?.id) getPlayerDetails(line.G.id, line.G.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, G: playerObj })));
+  }, [line.G]);
 
   const [formInput, setFormInput] = useState({ search: '' });
   const [searchedPlayers, setSearchedPlayers] = useState([]);
@@ -88,6 +114,7 @@ export default function LineManagement() {
         </div>
         {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button>
           : <button className="btn btn-success" type="button" onClick={changeLine}>Update</button>}
+        <div className="line-stats-container"><LineStatsCard lineInfo={lineInfo} /></div>
       </div>
     );
   } return (<>This line belongs to another user</>);
