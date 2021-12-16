@@ -19,7 +19,7 @@ export default function Lines() {
     <div className="lines-container">
       <span className="lines-header">My Lines</span>
 
-      {lines ? lines.map((line) => <LineCard key={line.line_id} line={line} />) : ''}
+      {lines ? lines.map((line) => <LineCard key={line.line_id} line={line} setLines={setLines} />) : ''}
       <button type="button" className="btn btn-primary" onClick={pushToCreate}>Create</button>
 
     </div>

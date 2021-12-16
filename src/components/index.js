@@ -8,3 +8,4 @@ export { default as CurrentForwardCard } from './CurrentForwardCard';
 export { default as SearchList } from './SearchList';
 export { default as LineSearchList } from './LineSearchList';
 export { default as LineCard } from './LineCard';
+export { default as LineStatsCard } from './LineStatsCard';
