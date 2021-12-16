@@ -9,7 +9,7 @@ import { getSearchedPlayers } from '../data/nhlCalls';
 import { LineSearchList, LineStatsCard } from '../components';
 
 export default function LineManagement() {
-  const [line, setLine] = useState({});
+  const [line, setLine] = useState({ name: '' });
   const [btnText, setBtnText] = useState('Save');
 
   const [lineInfo, setLineInfo] = useState({
@@ -28,7 +28,7 @@ export default function LineManagement() {
   useEffect(() => {
     if (lineId === 'create') {
       setLine({
-        name: 'test',
+        name: '',
         user_id: user.id,
         LW: null,
         C: null,
@@ -88,9 +88,10 @@ export default function LineManagement() {
   };
 
   const saveLine = async () => {
-    if (line.LW?.id && line.RW?.id && line.C?.id && line.D1?.id && line.D2?.id && line.G?.id) {
+    if (line.LW?.id && line.RW?.id && line.C?.id && line.D1?.id && line.D2?.id && line.G?.id && line.name) {
       createLine(line).then((data) => history.push(`/LineManagement/${data[0].line_id}`));
-    } else setBtnText('Please Complete Line');
+    } if (!line.name) setBtnText('Please Enter Name');
+    else setBtnText('Please Complete Line');
   };
 
   const changeLine = async () => {
@@ -100,9 +101,11 @@ export default function LineManagement() {
   if (line.user_id === user.id) {
     return (
       <div className="line-management-container">
-        {lineId === 'create' ? <div><input type="text" className="create-line-name" name="name" onChange={handleName} /></div> : ''}
         <div className="line-edit-container">
-          <LineDetailsCard line={line} lineInfo={lineInfo} setLineInfo={setLineInfo} />
+          <div className="line-details-container">
+            <div>Line Name: <input type="text" className="create-line-name" name="name" value={line.name} onChange={handleName} /></div>
+            <LineDetailsCard line={line} lineInfo={lineInfo} setLineInfo={setLineInfo} />
+          </div>
           <div className="line-search line">
             <form onSubmit={returnSearch} className="seach-form line">
               <div className="search-bar-container"><input type="text" name="search" className="search-bar line" value={formInput.search} onChange={handleChange} tabIndex="0" />
@@ -114,7 +117,7 @@ export default function LineManagement() {
         </div>
         {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button>
           : <button className="btn btn-success" type="button" onClick={changeLine}>Update</button>}
-        <div className="line-stats-container"><LineStatsCard lineInfo={lineInfo} /></div>
+        <div className="line-stats-container">{lineId !== 'create' ? <LineStatsCard lineInfo={lineInfo} /> : ''}</div>
       </div>
     );
   } return (<>This line belongs to another user</>);
