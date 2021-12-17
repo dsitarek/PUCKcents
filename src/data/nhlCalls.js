@@ -7,7 +7,7 @@ const currentSeason = '20212022';
 
 const getSearchedPlayers = async (userSearch) => {
   const search = userSearch.replace(/\s/g, '%20');
-  const searchCall = await axios.get(`https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/${search}`);
+  const searchCall = await axios.get(`https://cors-anywhere.herokuapp.com/https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/${search}`);
   const searchedPlayerReturn = [];
   const playerDataArr = (searchCall.data.suggestions).map((player) => player.split('|'));
   playerDataArr.forEach((player) => searchedPlayerReturn.push({
