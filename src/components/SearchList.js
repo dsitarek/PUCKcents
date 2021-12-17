@@ -13,7 +13,6 @@ export default function SearchList({ player }) {
     <div className="search-card" onClick={pushToPlayer} onKeyUp={(event) => { if (event.key === 'Enter') pushToPlayer(); }} role="button" tabIndex="0">
       <div className="search-img-container"><img className="search-img" src={playerImgURL} alt={noImg} /></div>
       <span className="search-card-span">{player.name}</span>
-      <span className="search-card-span">{player.playerNumber}</span>
       <span className="search-card-span">{player.team}</span>
       <span className="search-card-span">{player.position}</span>
 

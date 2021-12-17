@@ -40,16 +40,15 @@ const getSearchedPlayers = async (userSearch) => {
 
   const playerDataArr = removeDuplicatesFromArrayByProperty(data, 'name');
   const searchedPlayerReturn = [];
-  playerDataArr.forEach(async (player) => {
-    const nhlData = await getCurrentInfo(player.id);
+  playerDataArr.forEach((player) => {
     searchedPlayerReturn.push({
       id: player.id,
       name: player.name,
-      team: nhlData.currentTeam.name,
-      position: nhlData.primaryPosition.code,
-      playerNumber: nhlData.primaryNumber,
+      team: player.team,
+      position: player.position,
     });
   });
+  console.log(searchedPlayerReturn);
   return searchedPlayerReturn;
 };
 
@@ -62,7 +61,7 @@ const getCurrentStats = async (playerId) => {
 const getRecentGames = async (playerId) => {
   const call = await axios.get(`${statsApi}/people/${playerId}/stats?stats=gameLog&season=${currentSeason}`);
   const gameIndex = call.data.stats[0].splits;
-  return [gameIndex[0], gameIndex[1], gameIndex[2]];
+  return [gameIndex[2], gameIndex[1], gameIndex[0]];
 };
 
 export {

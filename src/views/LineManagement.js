@@ -76,11 +76,10 @@ export default function LineManagement() {
     setLine((prevState) => ({ ...prevState, name: e.target.value }));
   };
 
-  const returnSearch = async (e) => {
+  const returnSearch = (e) => {
     e.preventDefault();
     getSearchedPlayers(formInput.search).then((playerArr) => setSearchedPlayers(() => {
-      console.log(playerArr);
-      if (playerArr.length > 4) { return [playerArr[0], playerArr[1], playerArr[2], playerArr[3], playerArr[4]]; }
+      if (playerArr.length > 4) return [playerArr[0], playerArr[1], playerArr[2], playerArr[3], playerArr[4]];
       return playerArr;
     }));
   };
@@ -114,7 +113,7 @@ export default function LineManagement() {
                 <button className="btn btn-primary" type="submit">Search</button>
               </div>
             </form>
-            {searchedPlayers ? searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />) : console.log('nothing')}
+            {searchedPlayers ? searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />) : ''}
           </div>
         </div>
         {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button>
