@@ -18,9 +18,9 @@ export default function SearchList({ player, addPlayer }) {
   }, []);
 
   useEffect(async () => {
-    if (player.position === 'L') formInput.position = 'LW';
-    else if (player.position === 'D') formInput.position = 'D1';
-    else if (player.position === 'G') formInput.position = 'G';
+    if (player.position === 'Forward') formInput.position = 'LW';
+    else if (player.position === 'Defenseman') formInput.position = 'D1';
+    else if (player.position === 'Goalie') formInput.position = 'G';
     await getPlayerSeasons(player.id).then((years) => {
       const uniqueYearList = removeDuplicatesFromArrayByProperty(years, 'yearid');
       setPlayerSeasons(uniqueYearList);
@@ -45,14 +45,14 @@ export default function SearchList({ player, addPlayer }) {
           {playerSeasons ? playerSeasons.map((year) => <option key={`${player.name}-${year.yearid}`} value={year.yearid}>{year.yearid}</option>) : ''}
         </select>
         <select id="position" name="position" className="form-select pos-dropdown" aria-label="Default select example" value={formInput.position} onChange={handleChange}>
-          {player.position === 'D'
+          {player.position === 'Defenseman'
             ? (
               <>
                 <option value="D1">LD</option>
                 <option value="D2">RD</option>
               </>
             ) : ''}
-          {player.position === 'L' || player.position === 'C' || player.position === 'R'
+          {player.position === 'Forward'
             ? (
               <>
                 <option value="LW">LW</option>
@@ -61,7 +61,7 @@ export default function SearchList({ player, addPlayer }) {
 
               </>
             ) : ''}
-          {player.position === 'G'
+          {player.position === 'Goalie'
             ? (
               <>
                 <option value="G">G</option>

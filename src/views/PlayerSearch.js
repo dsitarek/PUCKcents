@@ -26,7 +26,6 @@ export default function PlayerSearch() {
         <div className="search-card">
           <span className="search-card-header" />
           <span className="search-card-header">Name</span>
-          <span className="search-card-header">#</span>
           <span className="search-card-header">Team</span>
           <span className="search-card-header">POS</span>
         </div>

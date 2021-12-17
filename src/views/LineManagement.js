@@ -76,10 +76,11 @@ export default function LineManagement() {
     setLine((prevState) => ({ ...prevState, name: e.target.value }));
   };
 
-  const returnSearch = async (e) => {
+  const returnSearch = (e) => {
     e.preventDefault();
     getSearchedPlayers(formInput.search).then((playerArr) => setSearchedPlayers(() => {
-      if (playerArr.length > 4) { return [playerArr[0], playerArr[1], playerArr[2], playerArr[3], playerArr[4]]; } return playerArr;
+      if (playerArr.length > 4) return [playerArr[0], playerArr[1], playerArr[2], playerArr[3], playerArr[4]];
+      return playerArr;
     }));
   };
 
