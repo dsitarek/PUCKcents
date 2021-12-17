@@ -79,7 +79,9 @@ export default function LineManagement() {
   const returnSearch = async (e) => {
     e.preventDefault();
     getSearchedPlayers(formInput.search).then((playerArr) => setSearchedPlayers(() => {
-      if (playerArr.length > 4) { return [playerArr[0], playerArr[1], playerArr[2], playerArr[3], playerArr[4]]; } return playerArr;
+      console.log(playerArr);
+      if (playerArr.length > 4) { return [playerArr[0], playerArr[1], playerArr[2], playerArr[3], playerArr[4]]; }
+      return playerArr;
     }));
   };
 
