@@ -50,7 +50,6 @@ const getSearchedPlayers = async (userSearch) => {
       playerNumber: nhlData.primaryNumber,
     });
   });
-  console.log(searchedPlayerReturn);
   return searchedPlayerReturn;
 };
 

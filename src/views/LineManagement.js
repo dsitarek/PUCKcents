@@ -114,7 +114,7 @@ export default function LineManagement() {
                 <button className="btn btn-primary" type="submit">Search</button>
               </div>
             </form>
-            {searchedPlayers ? searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />) : ''}
+            {searchedPlayers ? searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />) : console.log('nothing')}
           </div>
         </div>
         {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button>
