@@ -16,7 +16,12 @@
 ## ERD
 ![ERD](https://user-images.githubusercontent.com/82732748/146465599-da53799b-e087-4aa1-8098-2d6ffe5b0125.png)
 
+## Technical Flowchart
+![NETworthFlowchart](https://user-images.githubusercontent.com/82732748/146624245-7703778f-5fa4-4830-9c7d-de9f3115accb.png)
+
+
 ### [Project Board](https://github.com/dsitarek/hockey-battles/projects/1)
+
 
 ## Code Snippet
 ```
@@ -49,4 +54,3 @@ const getPlayerDetails = async (id, year) => {
 ## Contributors
 - [Daniel Sitarek](https://github.com/dsitarek) (App)
 - [Jonathan Lloyd](https://github.com/Jonathan-Lloyd) (Data)
-
