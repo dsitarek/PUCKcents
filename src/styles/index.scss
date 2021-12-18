@@ -2,12 +2,27 @@
 @import 'globals';
 
 body {
-  background-color: $favColor !important;
+  background-color: white !important;
 }
 
 .navbar {
-  background-color: #50596988;
+  background-color: #4484f188;
   color: black;
+}
+
+.navbar-container {
+  width: 100%;
+}
+
+.login-btn-container {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  margin: 0 1em 0 auto;
+}
+
+.login-btn {
+  width: 10em;
 }
 
 .user-img {

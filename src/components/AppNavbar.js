@@ -22,7 +22,7 @@ const AppNavbar = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="navbar-container">
       <Navbar light expand="md" className="navbar">
         <NavbarBrand href="/">Hockey App</NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -47,7 +47,7 @@ const AppNavbar = () => {
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </>
-            ) : <><button type="button" className="login-btn" onClick={signInUser}><img src={signInButton} alt="sign in" /></button></>}
+            ) : <><button type="button" className="login-btn-container" onClick={signInUser}><img className="login-btn" src={signInButton} alt="sign in" /></button></>}
           </Nav>
         </Collapse>
       </Navbar>
