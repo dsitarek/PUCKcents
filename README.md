@@ -1,4 +1,10 @@
-# NETworth
+# PUCK¢ents [![Netlify Status](https://api.netlify.com/api/v1/badges/6439dfd7-a06d-4404-82e0-022148c9c8a9/deploy-status)](https://app.netlify.com/sites/djs-puckcents/deploys)
+
+### [Deployed Site](https://djs-puckcents.netlify.app/)
+
+## Info
+There are tons of places to get player stats and salary data for almost every professional sport; however, I wasn’t able to find any apps that allowed you to combine a group of players and view their stats as a set.I wanted to build an app that allowed a user to create a hockey line combination of players and view that lines total stats and average stats. I also wanted to use data I had gotten to show rankings and grades of those players, based on certain metrics, individually and as a set.
+
 
 ## Features
 - As a user, you can be able to login with google.
@@ -12,6 +18,9 @@
   - Current stats
   - Player Info such as height, weight, etc.
   - Past stats, salary info, and grading by season
+
+
+![capstoneSS](https://user-images.githubusercontent.com/82732748/146659443-94db42c9-2fcd-49a5-bed9-9d2440ac799b.png)
 
 ## ERD
 ![ERD](https://user-images.githubusercontent.com/82732748/146465599-da53799b-e087-4aa1-8098-2d6ffe5b0125.png)
