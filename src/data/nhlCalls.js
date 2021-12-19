@@ -40,7 +40,7 @@ export default getSearchedPlayers;
 
 const getCurrentStats = async (playerId) => {
   const call = await axios.get(`${statsApi}/people/${playerId}/stats?stats=statsSingleSeason&season=${currentSeason}`);
-  return call.data.stats[0].splits[0].stat;
+  return call.data.stats[0]?.splits[0]?.stat;
 };
 const getRecentGames = async (playerId) => {
   const call = await axios.get(`${statsApi}/people/${playerId}/stats?stats=gameLog&season=${currentSeason}`);

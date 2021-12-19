@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function DefenseDetailsCard({ playerDetails, roundNum }) {
+  console.log(playerDetails);
   return (
     <div className="past-details-card">
       <li><b>Team:</b> {playerDetails.team}</li>
