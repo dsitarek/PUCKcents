@@ -2,12 +2,100 @@
 @import 'globals';
 
 body {
-  background-color: $favColor !important;
+  background-image: url(../assets/appBackground.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment:  fixed;
+  min-height:100%;
+}
+
+.app-container {
+  padding-top: 5em;
+  display: flex;
+  justify-content: center;
+  min-height:100%;
+  align-items: stretch;
+}
+
+.sign-in-header {
+  color: aliceblue;
+}
+
+.sign-in-img {
+  margin-top: 2em;
+  width: 60%;
+}
+
+.nav-span {
+  color: aliceblue;
+  font-family: Bauer, Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+  padding: 1em .5em 0 .5em;
+  line-height: 1.75em;
+  text-shadow: 1px 1px 1px black;
+}
+
+.nav-span:hover, .nav-span-user:hover  {
+  filter: brightness(80%);
+}
+
+.nav-span-user {
+  color: white;
+  font-family: Bauer, Arial, Helvetica, sans-serif;
+  font-size: .7em;
+}
+
+.dropdown-toggle.nav-link::after {
+  color: white;
+}
+
+.dropdown-menu.show {
+  background-color: $appblue;
+  color: white;
+  margin-top: .3em;
+  border-radius: 0 0 6px 6px;
+  border-top: none;
+}
+
+.dropdown-menu.show :first-child:hover {
+  background-color: transparent;
+}
+
+.dropdown-menu.show a.nav-link {
+  color: white;
+}
+
+.dropdown-menu.show a.nav-link:hover {
+  color: white;
+  filter: brightness(80%);
 }
 
 .navbar {
-  background-color: #50596988;
-  color: black;
+  background-color: #4483f1a8;
+  height: 3.5em;
+}
+
+.nav-logo {
+  width: 11em;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-container {
+  width: 100%;
+  position: fixed;
+}
+
+.login-btn-container {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  margin: 0 1em 0 auto;
+}
+
+.login-btn {
+  width: 10em;
 }
 
 .user-img {
@@ -17,9 +105,19 @@ body {
   margin-right: .5em;
 }
 
+.user-drop {
+  margin: 0 1em 0 auto;
+}
+
 .details-container {
   display: flex;
   flex-direction: column;
+  background-color: $contbg;
+  padding: 1em;
+}
+
+.info-header {
+  text-align: center;
 }
 
 .past-season-stats-container {
@@ -46,6 +144,22 @@ body {
   display: flex;
   align-items: center;
 }
+.details-current-info ul {
+  list-style-type: none;
+}
+
+.player-img {
+  width: 11em;
+  border: 1pz transparent;
+  border-radius: 6px;
+}
+
+.current-info-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 1em;
+}
 
 .recent-games-container {
   display: flex;
@@ -55,11 +169,14 @@ body {
 .recent-game-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px transparent;
+  border-radius: 3px;
   margin: .25em;
   padding: .25em;
   text-align: center;
   width: 20em;
+  background-color: aliceblue;
+  box-shadow: 2px 2px 4px darkgray;
 }
 
 .recent-game-stats ul {
@@ -69,27 +186,44 @@ body {
 
 .recent-games-header {
   align-self: center;
+  margin-top: 1em;
 }
 
 .search-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 100em;
+  min-width: 60em;
+  background-color: $contbg;
+  padding: .5em 0 20em 0;
+}
+
+.search-bar-container {
+  min-width: 100%;
+}
+
+.search-bar {
+  min-width: 50em;
 }
 
 .search-list-container {
   display: flex;
   flex-direction: column;
-  width:50%;
+  width:55em;
 }
 
 .search-card {
   display: flex;
   border: 1px solid black;
-  margin: .25em;
+  margin: .25em 0 .25em 0;
   justify-content: center;
   align-items: center;
   padding: .25em 10% .25em 10%;
+  min-width: 100%;
+  background-color: aliceblue;
 }
 
 .search-card-span, .search-card-header{
@@ -109,7 +243,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  max-width: 100em;
+  background-color: $contbg;
+  padding-bottom: 20em;
+}
+
+.lines-header {
+  font-family: Bauer;
+  font-size: 2em;
+  color: aliceblue;
+  text-shadow: 1px 1px 5px darkgray;
 }
 
 .line-card {
@@ -120,7 +264,9 @@ body {
   border-radius: 6px;
   align-items: center;
   width: 80%;
-  margin-top: .5em;
+  margin-top: .75em;
+  background-color: $appblue;
+  color: aliceblue;
 }
 
 .line-card-items {
@@ -145,8 +291,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
-  width: 100%;
+  border: 1px transparent;
+  background-color: rgba(255, 255, 255, 0.801);
+  width: 80%;
+  max-width: 100em;
+  min-width: 50em;
+  padding: 1em;
 }
 
 .line-details-forwards, .line-details-defenseman, .line-details-goalie {
@@ -158,30 +308,100 @@ body {
   color: red;
 }
 
+.line-details-container {
+  margin-left: 0
+}
+
 .line-edit-container {
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
+  margin-bottom: 1em;
 }
 
 .line-details-card {
   margin-top: .5em;
+  flex-grow: 1;
 }
 
 .line-position-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 6em;
-  height: 8em;
+  height: 100%;
   text-align: center;
-  border: 1px solid black;
+  border: 1px transparent;
+  border-radius: 6px;
   margin: .25em;
+  background-color: transparent;
+  overflow: hidden;
+  box-shadow: 1px 1px 3px black;
+}
+
+.line-name-span {
+  text-align: center;
+  height: 20%;
+  line-break: strict;
+  word-spacing: 10em;
+}
+
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+.line-search-form {
+  flex-grow: 1;
 }
 
 .line-search .line {
+  display: flex;
+  justify-content: center;
+  width: 30em;
+}
+
+.line-search-bar {
   width: 100%;
+}
+
+.line-search-btn {
+  margin: auto;
+  margin-left: .4em;
+}
+
+.line-search-card {
+  display: flex;
+  width: 100%;
+  height: 4em;
+  padding: .25em 0 .25em 0;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: .25em 0 .25em 0;
+  padding: .25em;
+}
+
+.line-search-card-hr {
+  color:black;
+  min-width: fit-content;
+  height: .1em;
+  margin: 0;
+}
+
+.line-search-card-span {
+  flex-basis: 15%;
+  min-width: 5em;
+  text-align: center;
+  max-width: fit-content;
+}
+
+.line-search-img {
+  width: 3em;
+  border: 1px transparent;
+  border-radius: 6px;
 }
 
 .line-details-img-container {
@@ -194,4 +414,80 @@ body {
 
 .line-position-card {
   height: 9em;
+}
+
+.line-update-save-btn {
+  margin-left: .25em;
+}
+
+.line-dropdown {
+  font-size: .8em;
+  border: 1px transparent;
+  border-radius: 3px;
+  height: 2.2em;
+  width: 80%;
+  margin-bottom: .1em;
+}
+
+.line-stats-container {
+  padding: 1em;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.226), -2px -2px 4px rgba(0, 0, 0, 0.226), 2px -2px 4px rgba(0, 0, 0, 0.226), -2px 2px 4px rgba(0, 0, 0, 0.226) ;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.btn-shape {
+  border-radius: 2px;
+  border: 1px transparent;
+  color: white;
+  background-color: #4483f1ce;
+  height: 2.2em;
+  padding: .5em;
+  line-height: 1em;
+}
+
+.btn-shape:hover {
+  filter: brightness(110%);
+  box-shadow: 1px 1px 3px white,-1px -1px 3px white,-1px 1px 3px white,1px -1px 3px white;
+}
+
+.line-update-save-btn {
+  margin: 1em 0 1em 0;
+  width: 50%;
+  align-self: center;
+}
+
+.create-line-btn {
+  width: 30%;
+  background-color: rgba(59, 165, 91, 0.795);
+}
+
+.delete-line-btn {
+  background-color: rgba(173, 76, 76, 0.856);
+}
+
+.player-search-btn {
+  margin-left: .25em;
+}
+
+.line-stats-table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0 1em 0;
+  min-width: 100%;
+}
+
+.line-stats-table-header {
+  font-weight: bold;
+  border: 1px solid black;
+  padding: .1em .25em .1em .25em;
+  text-align: center;
+  background-color: #89888bce;
+}
+
+.line-stats-table-data {
+  border: 1px solid black;
+  text-align: center;
+  background-color: aliceblue;
 }

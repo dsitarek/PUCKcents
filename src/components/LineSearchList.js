@@ -36,40 +36,42 @@ export default function SearchList({ player, addPlayer }) {
 
   return (
     <>{ formInput.year ? (
-      <div className="search-card">
-        <div className="search-img-container"><img className="search-img" src={playerImgURL} alt={player.name} /></div>
-        <span className="search-card-span">{player.name}</span>
-        <span className="search-card-span">{player.team}</span>
-        <span className="search-card-span">{player.position}</span>
-        <select id="year" name="year" className="form-select year-dropdown" aria-label="Default select example" value={formInput.year} onChange={handleChange}>
-          {playerSeasons ? playerSeasons.map((year) => <option key={`${player.name}-${year.yearid}`} value={year.yearid}>{year.yearid}</option>) : ''}
-        </select>
-        <select id="position" name="position" className="form-select pos-dropdown" aria-label="Default select example" value={formInput.position} onChange={handleChange}>
-          {player.position === 'Defenseman'
-            ? (
-              <>
-                <option value="D1">LD</option>
-                <option value="D2">RD</option>
-              </>
-            ) : ''}
-          {player.position === 'Forward'
-            ? (
-              <>
-                <option value="LW">LW</option>
-                <option value="C">C</option>
-                <option value="RW">RW</option>
+      <div className="line-search-card">
+        <div className="line-search-img-container"><img className="line-search-img" src={playerImgURL} alt={player.name} /></div>
+        <span className="line-search-card-span">{player.name}</span>
+        <span className="line-search-card-span">{player.team}</span>
+        <span className="line-search-card-span">{player.position}</span>
+        <span className="line-search-card-span">
+          <select id="year" name="year" className="year-dropdown line-dropdown" aria-label="Default select example" value={formInput.year} onChange={handleChange}>
+            {playerSeasons ? playerSeasons.map((year) => <option key={`${player.name}-${year.yearid}`} value={year.yearid}>{year.yearid}</option>) : ''}
+          </select>
+          <select id="position" name="position" className="pos-dropdown line-dropdown" aria-label="Default select example" value={formInput.position} onChange={handleChange}>
+            {player.position === 'Defenseman'
+              ? (
+                <>
+                  <option value="D1">LD</option>
+                  <option value="D2">RD</option>
+                </>
+              ) : ''}
+            {player.position === 'Forward'
+              ? (
+                <>
+                  <option value="LW">LW</option>
+                  <option value="C">C</option>
+                  <option value="RW">RW</option>
 
-              </>
-            ) : ''}
-          {player.position === 'Goalie'
-            ? (
-              <>
-                <option value="G">G</option>
-              </>
-            ) : ''}
+                </>
+              ) : ''}
+            {player.position === 'Goalie'
+              ? (
+                <>
+                  <option value="G">G</option>
+                </>
+              ) : ''}
 
-        </select>
-        <button className="btn btn-primary" type="button" onClick={() => addPlayer(formInput.position, Number(player.id), formInput.year)}>Add</button>
+          </select>
+        </span>
+        <button className="btn-shape" type="button" onClick={() => addPlayer(formInput.position, Number(player.id), formInput.year)}>Add</button>
       </div>
     ) : ''}
     </>

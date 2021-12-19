@@ -1,13 +1,11 @@
 import React from 'react';
-import { signInUser } from '../api/auth';
+import logo from '../assets/logo3.png';
 
 export default function SignIn() {
   return (
     <div className="text-center mt-5">
-      <h1>Welcome! Sign In!</h1>
-      <button type="button" className="btn btn-success" onClick={signInUser}>
-        Sign In
-      </button>
+      <h1 className="sign-in-header">Welcome! You must be logged in to view your lines.</h1>
+      <img className="sign-in-img" src={logo} alt="logo" />
     </div>
   );
 }

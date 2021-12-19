@@ -5,25 +5,64 @@ export default function GoalieDetailsCard({ playerDetails, roundNum }) {
   return (
     <div className="past-details-card">
       <li><b>Team:</b> {playerDetails.team}</li>
-      <li><b>Games:</b> {playerDetails.games}</li>
-      <li><b>Wins:</b> {playerDetails.wins}</li>
-      <li><b>Losses:</b> {playerDetails.losses}</li>
-      <li><b>Shutouts:</b> {playerDetails.shutouts}</li>
-      <li><b>Goals Against:</b> {playerDetails.goals_against}</li>
-      <li><b>GAA:</b> {roundNum(playerDetails.gaa, 3)}</li>
-      <li><b>Shots Against:</b> {playerDetails.shots_against}</li>
-      <li><b>Saves:</b> {playerDetails.saves}</li>
-      <li><b>Save Percentage:</b> {roundNum(playerDetails.save_percentage, 3)}</li>
-      <li><b>Games Started:</b> {playerDetails.games_started}</li>
-      <li><b>Goals:</b> {playerDetails.goals}</li>
-      <li><b>Assists:</b> {playerDetails.assists}</li>
-      <li><b>Points:</b> {playerDetails.points}</li>
-      <li><b>Salary Cap Hit:</b> &#36;{(playerDetails.cap_hit).toLocaleString()}</li>
-      <li><b>Cap Hit Percentage:</b> {roundNum((playerDetails.cap_pct * 100), 1)}%</li>
-      {playerDetails.Goalie_Skill ? <li><b>Goalie Skill Rating:</b> {playerDetails.Goalie_Skill}</li> : ''}
-      {playerDetails.goalie_usage_rating ? <li><b>Goalie Usage Rating:</b> {playerDetails.goalie_usage_rating}/10</li> : ''}
-      {playerDetails.goalie_save_rating ? <li><b>Goalie Save Rating:</b> {playerDetails.goalie_save_rating}/10</li> : ''}
-      {playerDetails.goalie_gaa_rtg ? <li><b>Goalie GAA Rating:</b> {playerDetails.goalie_gaa_rtg}/10</li> : ''}
+      <div>
+        <table className="line-stats-table">
+          <thead>
+            <tr>
+              <th className="line-stats-table-header">Games</th>
+              <th className="line-stats-table-header">Wins</th>
+              <th className="line-stats-table-header">Losses</th>
+              <th className="line-stats-table-header">Shutouts</th>
+              <th className="line-stats-table-header">Save %</th>
+              <th className="line-stats-table-header">Saves</th>
+              <th className="line-stats-table-header">GAA</th>
+              <th className="line-stats-table-header">Goals Against</th>
+              <th className="line-stats-table-header">Shots Against</th>
+              <th className="line-stats-table-header">Salary Cap Hit</th>
+              <th className="line-stats-table-header">Cap Hit %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="line-stats-table-data">{playerDetails.games}</td>
+              <td className="line-stats-table-data">{playerDetails.wins}</td>
+              <td className="line-stats-table-data">{playerDetails.losses}</td>
+              <td className="line-stats-table-data">{playerDetails.shutouts}</td>
+              <td className="line-stats-table-data">{roundNum(playerDetails.save_percentage, 3)}</td>
+              <td className="line-stats-table-data">{playerDetails.saves}</td>
+              <td className="line-stats-table-data">{roundNum(playerDetails.gaa, 3)}</td>
+              <td className="line-stats-table-data">{playerDetails.goals_against}</td>
+              <td className="line-stats-table-data">{playerDetails.shots_against}</td>
+              <td className="line-stats-table-data">&#36;{(playerDetails.cap_hit).toLocaleString('en-US')}</td>
+              <td className="line-stats-table-data">{roundNum((playerDetails.cap_pct * 100), 1)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table className="line-stats-table">
+          <thead>
+            <tr>
+              <th className="line-stats-table-header">Goalie Skill Rating</th>
+              <th className="line-stats-table-header">Goalie Save Rating</th>
+              <th className="line-stats-table-header">Goalie GAA Rating</th>
+              <th className="line-stats-table-header">Goalie Usage</th>
+              <th className="line-stats-table-header">Price Per Save</th>
+              <th className="line-stats-table-header">Price Per Win</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="line-stats-table-data">{playerDetails?.Goalie_Skill}</td>
+              <td className="line-stats-table-data">{playerDetails?.goalie_save_rating}</td>
+              <td className="line-stats-table-data">{playerDetails?.goalie_gaa_rtg}</td>
+              <td className="line-stats-table-data">{playerDetails?.goalie_usage_rating}</td>
+              <td className="line-stats-table-data">&#36;{(roundNum((playerDetails.cap_hit / playerDetails.saves), 2)).toLocaleString('en-US')}</td>
+              <td className="line-stats-table-data">&#36;{(roundNum((playerDetails.cap_hit / playerDetails.wins), 2)).toLocaleString('en-US')}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

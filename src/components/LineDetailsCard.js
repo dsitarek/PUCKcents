@@ -9,31 +9,31 @@ export default function LineDetailsCard({ lineInfo }) {
       <div className="line-details-forwards">
         <div className="line-position-card">
           {lineInfo.LW?.id ? <div className="line-details-img-container"><img className="line-details-img" src={getplayerImg(lineInfo.LW?.id)} alt={lineInfo.LW.name} /></div> : ''}
-          <span>{lineInfo.LW?.name || 'LW'}</span>
+          <span className="line-name-span">{lineInfo.LW?.name || 'LW'}</span>
         </div>
         <div className="line-position-card">
           {lineInfo.C?.id ? <div className="line-details-img-container"><img className="line-details-img" src={getplayerImg(lineInfo.C?.id)} alt={lineInfo.C.name} /></div> : ''}
-          <span>{lineInfo.C?.name || 'C'}</span>
+          <span className="line-name-span">{lineInfo.C?.name || 'C'}</span>
         </div>
         <div className="line-position-card">
           {lineInfo.RW?.id ? <div className="line-details-img-container"><img className="line-details-img" src={getplayerImg(lineInfo.RW?.id)} alt={lineInfo.RW.name} /></div> : ''}
-          <span> {lineInfo.RW?.name || 'RW'}</span>
+          <span className="line-name-span"> {lineInfo.RW?.name || 'RW'}</span>
         </div>
       </div>
       <div className="line-details-defenseman">
         <div className="line-position-card">
           {lineInfo.D1?.id ? <div className="line-details-img-container"><img className="line-details-img" src={getplayerImg(lineInfo.D1?.id)} alt={lineInfo.D1.name} /></div> : ''}
-          <span>{lineInfo.D1?.name || 'D'}</span>
+          <span className="line-name-span">{lineInfo.D1?.name || 'D'}</span>
         </div>
         <div className="line-position-card">
           {lineInfo.D2?.id ? <div className="line-details-img-container"><img className="line-details-img" src={getplayerImg(lineInfo.D2?.id)} alt={lineInfo.D2.name} /></div> : ''}
-          <span>{lineInfo.D2?.name || 'D'}</span>
+          <span className="line-name-span">{lineInfo.D2?.name || 'D'}</span>
         </div>
       </div>
       <div className="line-details-goalie">
         <div className="line-position-card">
           {lineInfo.G?.id ? <div className="line-details-img-container"><img className="line-details-img" src={getplayerImg(lineInfo.G?.id)} alt={lineInfo.G.name} /></div> : ''}
-          <span>{lineInfo.G?.name || 'G'}</span>
+          <span className="line-name-span">{lineInfo.G?.name || 'G'}</span>
         </div>
       </div>
     </div>

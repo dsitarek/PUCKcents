@@ -46,13 +46,12 @@ export default function PlayerDetails() {
   };
   return (
     <div className="details-container">
-      <h3>{playerDetails.name}</h3>
       {currentInfo.primaryPosition?.abbreviation === 'C' || currentInfo.primaryPosition?.abbreviation === 'LW' || currentInfo.primaryPosition?.abbreviation === 'RW' ? <CurrentForwardCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
       {currentInfo.primaryPosition?.abbreviation === 'D' ? <CurrentDefenseCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
       {currentInfo.primaryPosition?.abbreviation === 'G' ? <CurrentGoalieCard currentStats={currentStats} currentInfo={currentInfo} roundNum={roundNum} playerImgURL={playerImgURL} /> : ''}
       {!currentInfo.primaryPosition?.abbreviation ? 'Loading' : ''}
 
-      <span className="recent-games-header">Recent Games</span>
+      <span className="recent-games-header"><h4>Recent Games</h4></span>
       <div className="recent-games-container">
         {recentGames.map((game) => <RecentGamesInfo key={game.game.gamePk} game={game} position={currentInfo.primaryPosition?.abbreviation} />)}
       </div>

@@ -10,7 +10,7 @@ import { LineSearchList, LineStatsCard } from '../components';
 
 export default function LineManagement() {
   const [line, setLine] = useState({ name: '' });
-  const [btnText, setBtnText] = useState('Save');
+  const [btnText, setBtnText] = useState('Save Line');
 
   const [lineInfo, setLineInfo] = useState({
     LW: null,
@@ -104,21 +104,25 @@ export default function LineManagement() {
       <div className="line-management-container">
         <div className="line-edit-container">
           <div className="line-details-container">
-            <div>Line Name: <input type="text" className="create-line-name" name="name" value={line.name} onChange={handleName} /></div>
+            <div>Line Name: <input type="text" className="create-line-name" placeholder="Enter Line Name" name="name" value={line.name} onChange={handleName} /></div>
             <LineDetailsCard line={line} lineInfo={lineInfo} setLineInfo={setLineInfo} />
           </div>
           <div className="line-search line">
-            <form onSubmit={returnSearch} className="seach-form line">
-              <div className="search-bar-container"><input type="text" name="search" className="search-bar line" value={formInput.search} onChange={handleChange} tabIndex="0" />
-                <button className="btn btn-primary" type="submit">Search</button>
+            <form onSubmit={returnSearch} className="line-search-form line">
+              <div className="search-bar-container">
+                <input type="text" name="search" placeholder="Search Players" className="line-search-bar" value={formInput.search} onChange={handleChange} tabIndex="0" />
+                <button className="btn-shape btn-blue line-search-btn" type="submit">Search</button>
               </div>
             </form>
-            {searchedPlayers ? searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />) : ''}
+            <div className="line-search-container">
+              {searchedPlayers.length > 0 ? <hr className="line-search-card-hr" /> : ''}
+              {searchedPlayers.map((player) => <><LineSearchList key={player.id} player={player} addPlayer={addPlayer} /><hr className="line-search-card-hr" /></>)}
+            </div>
           </div>
         </div>
-        {lineId === 'create' ? <button className="btn btn-primary" type="button" onClick={saveLine}>{btnText}</button>
-          : <button className="btn btn-success" type="button" onClick={changeLine}>Update</button>}
-        <div className="line-stats-container">{lineId !== 'create' ? <LineStatsCard lineInfo={lineInfo} /> : ''}</div>
+        {lineId === 'create' ? <button className="btn-shape line-update-save-btn" type="button" onClick={saveLine}>{btnText}</button>
+          : <button className="btn-shape line-update-save-btn" type="button" onClick={changeLine}>Update Line</button>}
+        {lineId !== 'create' ? <div className="line-stats-container"><LineStatsCard lineInfo={lineInfo} /></div> : ''}
       </div>
     );
   } return (<>This line belongs to another user</>);
