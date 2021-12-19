@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../api/auth';
 import Routes from '../routes';
-import SignIn from '../views/SignIn';
 import { AppNavbar } from '../components/index';
 
 function Initialize() {
@@ -17,7 +16,7 @@ function Initialize() {
   return (
     <>
       <AppNavbar />
-      {session ? <Routes /> : <SignIn />}
+      <div className="app-container"><Routes session={session} /></div>
     </>
   );
 }
