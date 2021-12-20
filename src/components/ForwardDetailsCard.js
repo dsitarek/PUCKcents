@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ForwardDetailsCard({ playerDetails, roundNum }) {
+  console.log(playerDetails);
   return (
     <div className="past-details-card">
       <li><b>Team:</b> {playerDetails.team}</li>
@@ -62,7 +63,7 @@ export default function ForwardDetailsCard({ playerDetails, roundNum }) {
               <td className="line-stats-table-data">{playerDetails?.def_block_rtg}</td>
               <td className="line-stats-table-data">{playerDetails?.fwd_shift_usage_rtg}</td>
               <td className="line-stats-table-data">{playerDetails?.penalty_liability_rtg}</td>
-              <td className="line-stats-table-data">&#36;{(roundNum((playerDetails.cap_hit / playerDetails.goals), 2)).toLocaleString('en-US')}</td>
+              <td className="line-stats-table-data">&#36;{(roundNum((playerDetails.cap_hit / playerDetails.goals), 2)).toLocaleString('en-US') || 'N/A'}</td>
             </tr>
           </tbody>
         </table>
