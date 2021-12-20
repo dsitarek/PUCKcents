@@ -114,6 +114,11 @@ body {
   flex-direction: column;
   background-color: $contbg;
   padding: 1em;
+  min-width: 85em;
+}
+
+.no-stats-header {
+  margin-left: 12em;
 }
 
 .info-header {
