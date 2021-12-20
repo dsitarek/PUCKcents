@@ -45,7 +45,6 @@ export default function PlayerDetails() {
     return Math.round(num * exp) / exp;
   };
 
-  console.log(recentGames);
   return (
     <div className="details-container">
       {currentInfo.primaryPosition?.abbreviation === 'C' || currentInfo.primaryPosition?.abbreviation === 'LW' || currentInfo.primaryPosition?.abbreviation === 'RW' ? <CurrentForwardCard currentStats={currentStats} currentInfo={currentInfo} playerImgURL={playerImgURL} /> : ''}
@@ -55,7 +54,7 @@ export default function PlayerDetails() {
 
       <span className="recent-games-header"><h4>Recent Games</h4></span>
       <div className="recent-games-container">
-        {recentGames?.stat ? recentGames.map((game) => <RecentGamesInfo key={game.game.gamePk} game={game} position={currentInfo.primaryPosition?.abbreviation} />) : 'No Recent Games'}
+        {recentGames[0]?.game ? recentGames.map((game) => <RecentGamesInfo key={game.game.gamePk} game={game} position={currentInfo.primaryPosition?.abbreviation} />) : 'No Recent Games'}
       </div>
       <div className="past-season-stats-container">
         <div className="past-season-stats-header">
