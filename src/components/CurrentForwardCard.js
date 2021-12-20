@@ -10,22 +10,22 @@ export default function CurrentForwardCard({ currentStats, currentInfo, playerIm
         <div className="details-current-header">
           <div><img src={playerImgURL} className="player-img" alt={currentInfo?.name || 'player'} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
           <div className="details-current-info">
-            {currentStats?.name
+            {currentStats?.shifts
               ? (
                 <ul>
-                  <li><b>Current Team:</b> {currentInfo.currentTeam.name}</li>
-                  <li><b>Position:</b> {currentInfo.primaryPosition.name}</li>
-                  <li><b>Birthdate:</b> {new Date(currentInfo.birthDate).toLocaleDateString('en-US')}</li>
-                  <li><b>Origin:</b> {currentInfo.birthCity}, {currentInfo.birthStateProvince}{currentInfo.birthStateProvince ? ', ' : ''}{currentInfo.birthCountry}</li>
-                  <li><b>Height:</b> {currentInfo.height}</li>
-                  <li><b>Weight:</b> {currentInfo.weight}lbs</li>
-                  <li><b>Shoots:</b> {(currentInfo.shootsCatches).startsWith('R') ? 'Right' : 'Left'}</li>
+                  <li><b>Current Team:</b> {currentInfo?.currentTeam?.name || 'N/A'}</li>
+                  <li><b>Position:</b> {currentInfo?.primaryPosition?.name || 'N/A'}</li>
+                  <li><b>Birthdate:</b> {currentInfo?.birthDate ? new Date(currentInfo.birthDate).toLocaleDateString('en-US') : 'N/A'}</li>
+                  <li><b>Origin:</b> {currentInfo?.birthCity || 'N/A'}, {currentInfo.birthStateProvince}{currentInfo.birthStateProvince ? ', ' : ''}{currentInfo.birthCountry}</li>
+                  <li><b>Height:</b> {currentInfo?.height || 'N/A'}</li>
+                  <li><b>Weight:</b> {currentInfo?.weight || 'N/A'}lbs</li>
+                  <li><b>Catches:</b> {(currentInfo?.shootsCatches || 'N/A').startsWith('R') ? 'Right' : 'Left'}</li>
                 </ul>
               ) : <h4 className="no-stats-header">No Current Stats  For {currentInfo.fullName}</h4>}
           </div>
         </div>
       </div>
-      {currentStats?.name ? (
+      {currentStats?.shifts ? (
         <>
           <h4 className="info-header">Current Season Stats</h4>
           <div className="details-current-body">
