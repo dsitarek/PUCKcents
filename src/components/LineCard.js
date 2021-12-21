@@ -26,8 +26,8 @@ export default function lineCard({ line, setLines }) {
         <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D1.id)} alt={line.D1.id} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
         <div className="line-img-container"><img className="line-img" src={getplayerImg(line.D2.id)} alt={line.D2.id} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
         <div className="line-img-container"><img className="line-img" src={getplayerImg(line.G.id)} alt={line.G.id} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
-        <div className="line-img-container"><button className="btn-shape delete-line-btn" type="button" onClick={removeLine}>Delete</button></div>
       </div>
+      <div className="line-delete-container"><button className="btn-shape delete-line-btn" type="button" onClick={removeLine}>Delete</button></div>
     </div>
   );
 }
