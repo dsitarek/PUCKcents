@@ -59,6 +59,7 @@ const getPlayerDetails = async (id, year) => {
   return { ...data[0], ...salaryData[0] };
 };
 ```
+### [Loom](https://www.loom.com/share/acaf9682ea3c4847afd0b6cd876b740c)
 
 ## Contributors
 - [Daniel Sitarek](https://github.com/dsitarek) (App)
