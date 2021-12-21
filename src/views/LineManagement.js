@@ -10,7 +10,7 @@ import { LineSearchList, LineStatsCard } from '../components';
 
 export default function LineManagement() {
   const [line, setLine] = useState({ name: '' });
-  const [btnText, setBtnText] = useState('Save Line');
+  const [btnText, setBtnText] = useState({ create: 'Save Line', update: 'Update Line' });
 
   const [lineInfo, setLineInfo] = useState({
     LW: null,
@@ -95,8 +95,10 @@ export default function LineManagement() {
     else setBtnText('Please Complete Line');
   };
 
-  const changeLine = async () => {
+  const changeLine = () => {
     updateLine(line, lineId);
+    setBtnText((prevState) => ({ ...prevState, update: 'Updated!' }));
+    setTimeout(() => (setBtnText((prevState) => ({ ...prevState, update: 'Update Line' }))), 1500);
   };
 
   if (line.user_id === user.id) {
@@ -116,12 +118,12 @@ export default function LineManagement() {
             </form>
             <div className="line-search-container">
               {searchedPlayers.length > 0 ? <hr className="line-search-card-hr" /> : ''}
-              {searchedPlayers.map((player) => <><LineSearchList key={player.id} player={player} addPlayer={addPlayer} /><hr className="line-search-card-hr" /></>)}
+              {searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />)}
             </div>
           </div>
         </div>
-        {lineId === 'create' ? <button className="btn-shape line-update-save-btn" type="button" onClick={saveLine}>{btnText}</button>
-          : <button className="btn-shape line-update-save-btn" type="button" onClick={changeLine}>Update Line</button>}
+        {lineId === 'create' ? <button className="btn-shape line-update-save-btn" type="button" onClick={saveLine}>{btnText.create}</button>
+          : <button className="btn-shape line-update-save-btn" type="button" onClick={changeLine}>{btnText.update || 'Update Line'}</button>}
         {lineId !== 'create' ? <div className="line-stats-container"><LineStatsCard lineInfo={lineInfo} /></div> : ''}
       </div>
     );

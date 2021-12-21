@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function DefenseDetailsCard({ playerDetails, roundNum }) {
-  console.log(playerDetails);
   return (
     <div className="past-details-card">
       <li><b>Team:</b> {playerDetails.team}</li>
@@ -73,6 +72,26 @@ export default function DefenseDetailsCard({ playerDetails, roundNum }) {
 }
 
 DefenseDetailsCard.propTypes = {
-  playerDetails: PropTypes.shape().isRequired,
+  playerDetails: PropTypes.shape({
+    team: PropTypes.string,
+    games: PropTypes.number,
+    goals: PropTypes.number,
+    assists: PropTypes.number,
+    points: PropTypes.number,
+    plusMinus: PropTypes.number,
+    goals_per_game: PropTypes.number,
+    blocked_shots_per_game: PropTypes.number,
+    blocked: PropTypes.number,
+    penaltymin: PropTypes.number,
+    points_per_game: PropTypes.number,
+    cap_hit: PropTypes.number,
+    cap_pct: PropTypes.number,
+    Defense_Skill: PropTypes.string,
+    def_scoring_rtg: PropTypes.number,
+    def_pass_rtg: PropTypes.number,
+    def_block_rtg: PropTypes.number,
+    def_shift_usage_rtg: PropTypes.number,
+    penalty_liability_rtg: PropTypes.number,
+  }).isRequired,
   roundNum: PropTypes.func.isRequired,
 };

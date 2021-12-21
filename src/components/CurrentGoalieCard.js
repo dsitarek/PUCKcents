@@ -5,13 +5,12 @@ import noImg from '../assets/noImg.png';
 export default function CurrentGoalieCard({
   currentStats, currentInfo, roundNum, playerImgURL,
 }) {
-  console.log(currentStats);
   return (
     <div className="current-details-card">
       <div className="current-info-container">
         <h2>{currentInfo.fullName}</h2>
         <div className="details-current-header">
-          <div><img src={playerImgURL} className="player-img" alt={currentInfo?.name || 'player'} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
+          <div><img src={playerImgURL} className="player-img" alt={currentInfo?.fullName || 'player'} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
           <div className="details-current-info">
             <ul>
               <li><b>Current Team:</b> {currentInfo?.currentTeam?.name || 'N/A'}</li>
@@ -92,10 +91,41 @@ export default function CurrentGoalieCard({
     </div>
   );
 }
-
+CurrentGoalieCard.defaultProps = {
+  currentStats: {},
+  currentInfo: {},
+};
 CurrentGoalieCard.propTypes = {
-  currentStats: PropTypes.shape().isRequired,
-  currentInfo: PropTypes.shape().isRequired,
+  currentStats: PropTypes.shape({
+    games: PropTypes.number,
+    wins: PropTypes.number,
+    losses: PropTypes.number,
+    shutouts: PropTypes.number,
+    savePercentage: PropTypes.number,
+    saves: PropTypes.number,
+    goalAgainstAverage: PropTypes.number,
+    goalsAgainst: PropTypes.number,
+    timeOnIce: PropTypes.string,
+    evenStrengthSavePercentage: PropTypes.number,
+    evenSaves: PropTypes.number,
+    powerPlaySavePercentage: PropTypes.number,
+    powerPlaySaves: PropTypes.number,
+    shortHandedSavePercentage: PropTypes.number,
+    shortHandedSaves: PropTypes.number,
+    gamesStarted: PropTypes.number,
+  }),
+  currentInfo: PropTypes.shape({
+    fullName: PropTypes.string,
+    currentTeam: PropTypes.shape({ name: PropTypes.string }),
+    primaryPosition: PropTypes.shape({ name: PropTypes.string }),
+    birthStateProvince: PropTypes.string,
+    birthCountry: PropTypes.string,
+    birthCity: PropTypes.string,
+    birthDate: PropTypes.string,
+    height: PropTypes.string,
+    weight: PropTypes.number,
+    shootsCatches: PropTypes.string,
+  }),
   roundNum: PropTypes.func.isRequired,
   playerImgURL: PropTypes.string.isRequired,
 };

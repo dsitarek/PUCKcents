@@ -68,6 +68,23 @@ export default function GoalieDetailsCard({ playerDetails, roundNum }) {
 }
 
 GoalieDetailsCard.propTypes = {
-  playerDetails: PropTypes.shape().isRequired,
+  playerDetails: PropTypes.shape({
+    team: PropTypes.string,
+    games: PropTypes.number,
+    wins: PropTypes.number,
+    losses: PropTypes.number,
+    save_percentage: PropTypes.number,
+    saves: PropTypes.number,
+    gaa: PropTypes.number,
+    goals_against: PropTypes.number,
+    shots_against: PropTypes.number,
+    cap_hit: PropTypes.number,
+    cap_pct: PropTypes.number,
+    Goalie_Skill: PropTypes.string,
+    goalie_save_rating: PropTypes.number,
+    goalie_gaa_rtg: PropTypes.number,
+    goalie_usage_rating: PropTypes.number,
+    shutouts: PropTypes.number,
+  }).isRequired,
   roundNum: PropTypes.func.isRequired,
 };

@@ -27,6 +27,21 @@ RecentgameInfo.defaultProps = {
 };
 
 RecentgameInfo.propTypes = {
-  game: PropTypes.shape().isRequired,
+  game: PropTypes.shape({
+    stat: PropTypes.shape({
+      saves: PropTypes.number,
+      savePercentage: PropTypes.number,
+      goalsAgainst: PropTypes.number,
+      goals: PropTypes.number,
+      assists: PropTypes.number,
+      plusMinus: PropTypes.number,
+      shutouts: PropTypes.number,
+    }),
+    opponent: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    isWin: PropTypes.bool,
+    date: PropTypes.string,
+  }).isRequired,
   position: PropTypes.string,
 };

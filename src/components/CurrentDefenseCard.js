@@ -8,7 +8,7 @@ export default function CurrentDefenseCard({ currentStats, currentInfo, playerIm
       <div className="current-info-container">
         <h2>{currentInfo.fullName}</h2>
         <div className="details-current-header">
-          <div><img src={playerImgURL} className="player-img" alt={currentInfo?.name || 'player'} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
+          <div><img src={playerImgURL} className="player-img" alt={currentInfo?.fullName || 'player'} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
           <div className="details-current-info">
             {currentStats?.shifts
               ? (
@@ -101,10 +101,44 @@ export default function CurrentDefenseCard({ currentStats, currentInfo, playerIm
 
 CurrentDefenseCard.defaultProps = {
   currentStats: {},
+  currentInfo: {},
 };
 
 CurrentDefenseCard.propTypes = {
-  currentStats: PropTypes.shape(),
-  currentInfo: PropTypes.shape().isRequired,
+  currentStats: PropTypes.shape({
+    shifts: PropTypes.number,
+    evenTimeOnIcePerGame: PropTypes.string,
+    powerPlayGoals: PropTypes.number,
+    powerPlayPoints: PropTypes.number,
+    powerPlayTimeOnIce: PropTypes.string,
+    shortHandedGoals: PropTypes.number,
+    shortHandedPoints: PropTypes.number,
+    shortHandedTimeOnIce: PropTypes.string,
+    pim: PropTypes.number,
+    timeOnIce: PropTypes.string,
+    games: PropTypes.number,
+    goals: PropTypes.number,
+    assists: PropTypes.number,
+    points: PropTypes.number,
+    shots: PropTypes.number,
+    shotPct: PropTypes.number,
+    faceOffPct: PropTypes.number,
+    plusMinus: PropTypes.number,
+    blocked: PropTypes.number,
+    hits: PropTypes.number,
+    gameWinningGoals: PropTypes.number,
+  }),
+  currentInfo: PropTypes.shape({
+    fullName: PropTypes.string,
+    currentTeam: PropTypes.shape({ name: PropTypes.string }),
+    primaryPosition: PropTypes.shape({ name: PropTypes.string }),
+    birthStateProvince: PropTypes.string,
+    birthCountry: PropTypes.string,
+    birthCity: PropTypes.string,
+    birthDate: PropTypes.string,
+    height: PropTypes.string,
+    weight: PropTypes.number,
+    shootsCatches: PropTypes.string,
+  }),
   playerImgURL: PropTypes.string.isRequired,
 };
