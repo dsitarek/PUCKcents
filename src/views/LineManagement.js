@@ -42,6 +42,11 @@ export default function LineManagement() {
   }, []);
 
   useEffect(() => {
+    if (lineId === 'create') document.title = 'Create a line';
+    else document.title = `${line.name}` || 'Loading';
+  }, [line]);
+
+  useEffect(() => {
     if (line.RW?.id) getPlayerDetails(line.RW.id, line.RW.season).then((playerObj) => setLineInfo((prevState) => ({ ...prevState, RW: playerObj })));
   }, [line.RW]);
 
