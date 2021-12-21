@@ -41,5 +41,12 @@ export default function LineDetailsCard({ lineInfo }) {
 }
 
 LineDetailsCard.propTypes = {
-  lineInfo: PropTypes.shape().isRequired,
+  lineInfo: PropTypes.shape({
+    LW: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
+    C: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
+    RW: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
+    D1: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
+    D2: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
+    G: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
+  }).isRequired,
 };

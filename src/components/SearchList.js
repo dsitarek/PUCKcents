@@ -21,5 +21,10 @@ export default function SearchList({ player }) {
 }
 
 SearchList.propTypes = {
-  player: PropTypes.shape().isRequired,
+  player: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    team: PropTypes.string,
+    position: PropTypes.string,
+  }).isRequired,
 };

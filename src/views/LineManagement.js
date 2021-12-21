@@ -116,7 +116,7 @@ export default function LineManagement() {
             </form>
             <div className="line-search-container">
               {searchedPlayers.length > 0 ? <hr className="line-search-card-hr" /> : ''}
-              {searchedPlayers.map((player) => <><LineSearchList key={player.id} player={player} addPlayer={addPlayer} /><hr className="line-search-card-hr" /></>)}
+              {searchedPlayers.map((player) => <LineSearchList key={player.id} player={player} addPlayer={addPlayer} />)}
             </div>
           </div>
         </div>

@@ -32,6 +32,13 @@ export default function lineCard({ line, setLines }) {
 }
 
 lineCard.propTypes = {
-  line: PropTypes.shape().isRequired,
+  line: PropTypes.shape({
+    LW: PropTypes.shape({ id: PropTypes.number }),
+    C: PropTypes.shape({ id: PropTypes.number }),
+    RW: PropTypes.shape({ id: PropTypes.number }),
+    D1: PropTypes.shape({ id: PropTypes.number }),
+    D2: PropTypes.shape({ id: PropTypes.number }),
+    G: PropTypes.shape({ id: PropTypes.number }),
+  }).isRequired,
   setLines: PropTypes.func.isRequired,
 };

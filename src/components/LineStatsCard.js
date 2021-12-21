@@ -84,82 +84,98 @@ export default function LineStatsCard({ lineInfo }) {
     <>
       <div>
         <table className="line-stats-table">
-          <tr>
-            <th className="line-stats-table-header">Total Goals</th>
-            <th className="line-stats-table-header">Total Assists</th>
-            <th className="line-stats-table-header">Total Plus/Minus</th>
-            <th className="line-stats-table-header">Avg Plus/Minus</th>
-            <th className="line-stats-table-header">Total PIM Per Game</th>
-            <th className="line-stats-table-header">Total Avg PPG</th>
-            <th className="line-stats-table-header">Forward Avg PPG</th>
-            <th className="line-stats-table-header">Defense Avg PPG</th>
-          </tr>
-          <tr>
-            <td className="line-stats-table-data">{lineStats.totalGoals}</td>
-            <td className="line-stats-table-data">{lineStats.totalAssists}</td>
-            <td className="line-stats-table-data">{lineStats.totalPoints}</td>
-            <td className="line-stats-table-data">{lineStats.totalPlusMinus}</td>
-            <td className="line-stats-table-data">{lineStats.avgPlusMinus}</td>
-            <td className="line-stats-table-data">{lineStats.totalAveragePPG}</td>
-            <td className="line-stats-table-data">{lineStats.forwardAveragePPG}</td>
-            <td className="line-stats-table-data">{lineStats.defenseAveragePPG}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th className="line-stats-table-header">Total Goals</th>
+              <th className="line-stats-table-header">Total Assists</th>
+              <th className="line-stats-table-header">Total Plus/Minus</th>
+              <th className="line-stats-table-header">Avg Plus/Minus</th>
+              <th className="line-stats-table-header">Total PIM Per Game</th>
+              <th className="line-stats-table-header">Total Avg PPG</th>
+              <th className="line-stats-table-header">Forward Avg PPG</th>
+              <th className="line-stats-table-header">Defense Avg PPG</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="line-stats-table-data">{lineStats.totalGoals}</td>
+              <td className="line-stats-table-data">{lineStats.totalAssists}</td>
+              <td className="line-stats-table-data">{lineStats.totalPoints}</td>
+              <td className="line-stats-table-data">{lineStats.totalPlusMinus}</td>
+              <td className="line-stats-table-data">{lineStats.avgPlusMinus}</td>
+              <td className="line-stats-table-data">{lineStats.totalAveragePPG}</td>
+              <td className="line-stats-table-data">{lineStats.forwardAveragePPG}</td>
+              <td className="line-stats-table-data">{lineStats.defenseAveragePPG}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div>
         <table className="line-stats-table">
-          <tr>
-            <th className="line-stats-table-header">Total Cap Hit</th>
-            <th className="line-stats-table-header">Total Cap Hit %</th>
-            <th className="line-stats-table-header">Cost Per Point</th>
-            <th className="line-stats-table-header">Cap Hit Per Point</th>
-          </tr>
-          <tr>
-            <td className="line-stats-table-data">{lineStats.totalCapHit}</td>
-            <td className="line-stats-table-data">{lineStats.totalCapHitPercent}%</td>
-            <td className="line-stats-table-data">{lineStats.pointsPerDollar}</td>
-            <td className="line-stats-table-data">{lineStats.pointsCapHit}%</td>
-          </tr>
+          <thead>
+            <tr>
+              <th className="line-stats-table-header">Total Cap Hit</th>
+              <th className="line-stats-table-header">Total Cap Hit %</th>
+              <th className="line-stats-table-header">Cost Per Point</th>
+              <th className="line-stats-table-header">Cap Hit Per Point</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="line-stats-table-data">{lineStats.totalCapHit}</td>
+              <td className="line-stats-table-data">{lineStats.totalCapHitPercent}%</td>
+              <td className="line-stats-table-data">{lineStats.pointsPerDollar}</td>
+              <td className="line-stats-table-data">{lineStats.pointsCapHit}%</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div>
         <table className="line-stats-table">
-          <tr>
-            <th className="line-stats-table-header">Forward Line Scoring Rtg</th>
-            <th className="line-stats-table-header">Forward Line Pass Rtg</th>
-            <th className="line-stats-table-header">Defense Line Scoring Rtg</th>
-            <th className="line-stats-table-header">Defense Line Pass Rtg</th>
-            <th className="line-stats-table-header">Defense Line Block Rtg</th>
-            <th className="line-stats-table-header">Goalie GAA Rtg</th>
-            <th className="line-stats-table-header">Goalie Save Rtg</th>
-            <th className="line-stats-table-header">Penalty Liability Rtg</th>
-          </tr>
-          <tr>
-            <td className="line-stats-table-data">{lineStats.fScore}</td>
-            <td className="line-stats-table-data">{lineStats.fPassRtg}</td>
-            <td className="line-stats-table-data">{lineStats.dScore}</td>
-            <td className="line-stats-table-data">{lineStats.dPassRtg}</td>
-            <td className="line-stats-table-data">{lineStats.dBlock}</td>
-            <td className="line-stats-table-data">{lineStats.gaaRtg}</td>
-            <td className="line-stats-table-data">{lineStats.gSave}</td>
-            <td className="line-stats-table-data">{lineStats.penaltyLiability}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th className="line-stats-table-header">Forward Line Scoring Rtg</th>
+              <th className="line-stats-table-header">Forward Line Pass Rtg</th>
+              <th className="line-stats-table-header">Defense Line Scoring Rtg</th>
+              <th className="line-stats-table-header">Defense Line Pass Rtg</th>
+              <th className="line-stats-table-header">Defense Line Block Rtg</th>
+              <th className="line-stats-table-header">Goalie GAA Rtg</th>
+              <th className="line-stats-table-header">Goalie Save Rtg</th>
+              <th className="line-stats-table-header">Penalty Liability Rtg</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="line-stats-table-data">{lineStats.fScore}</td>
+              <td className="line-stats-table-data">{lineStats.fPassRtg}</td>
+              <td className="line-stats-table-data">{lineStats.dScore}</td>
+              <td className="line-stats-table-data">{lineStats.dPassRtg}</td>
+              <td className="line-stats-table-data">{lineStats.dBlock}</td>
+              <td className="line-stats-table-data">{lineStats.gaaRtg}</td>
+              <td className="line-stats-table-data">{lineStats.gSave}</td>
+              <td className="line-stats-table-data">{lineStats.penaltyLiability}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div>
         <table className="line-stats-table">
-          <tr>
-            <th className="line-stats-table-header">Line Forward Skill</th>
-            <th className="line-stats-table-header">Line Defense Skill</th>
-            <th className="line-stats-table-header">Goalie Skill</th>
-            <th className="line-stats-table-header">Total Line Skill</th>
-          </tr>
-          <tr>
-            <td className="line-stats-table-data">{lineStats.fSkill}</td>
-            <td className="line-stats-table-data">{lineStats.dSkill}</td>
-            <td className="line-stats-table-data">{lineStats.gSkill}</td>
-            <td className="line-stats-table-data">{lineStats.totalSkill}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th className="line-stats-table-header">Line Forward Skill</th>
+              <th className="line-stats-table-header">Line Defense Skill</th>
+              <th className="line-stats-table-header">Goalie Skill</th>
+              <th className="line-stats-table-header">Total Line Skill</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="line-stats-table-data">{lineStats.fSkill}</td>
+              <td className="line-stats-table-data">{lineStats.dSkill}</td>
+              <td className="line-stats-table-data">{lineStats.gSkill}</td>
+              <td className="line-stats-table-data">{lineStats.totalSkill}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </>
@@ -168,5 +184,83 @@ export default function LineStatsCard({ lineInfo }) {
 }
 
 LineStatsCard.propTypes = {
-  lineInfo: PropTypes.shape().isRequired,
+  lineInfo: PropTypes.shape({
+    LW: PropTypes.shape({
+      goals: PropTypes.number,
+      assists: PropTypes.number,
+      points: PropTypes.number,
+      points_per_game: PropTypes.number,
+      plusMinus: PropTypes.number,
+      pim_per_game: PropTypes.number,
+      cap_hit: PropTypes.number,
+      cap_pct: PropTypes.number,
+      fwd_pass_rtg: PropTypes.number,
+      fwd_scoring_rtg: PropTypes.number,
+      penalty_liability_rtg: PropTypes.number,
+      Forward_Skill: PropTypes.string,
+    }),
+    RW: PropTypes.shape({
+      goals: PropTypes.number,
+      assists: PropTypes.number,
+      points: PropTypes.number,
+      points_per_game: PropTypes.number,
+      plusMinus: PropTypes.number,
+      pim_per_game: PropTypes.number,
+      cap_hit: PropTypes.number,
+      cap_pct: PropTypes.number,
+      fwd_pass_rtg: PropTypes.number,
+      fwd_scoring_rtg: PropTypes.number,
+      penalty_liability_rtg: PropTypes.number,
+      Forward_Skill: PropTypes.string,
+    }),
+    C: PropTypes.shape({
+      goals: PropTypes.number,
+      assists: PropTypes.number,
+      points: PropTypes.number,
+      points_per_game: PropTypes.number,
+      plusMinus: PropTypes.number,
+      pim_per_game: PropTypes.number,
+      cap_hit: PropTypes.number,
+      cap_pct: PropTypes.number,
+      fwd_pass_rtg: PropTypes.number,
+      fwd_scoring_rtg: PropTypes.number,
+      penalty_liability_rtg: PropTypes.number,
+      Forward_Skill: PropTypes.string,
+    }),
+    D1: PropTypes.shape({
+      goals: PropTypes.number,
+      assists: PropTypes.number,
+      points: PropTypes.number,
+      points_per_game: PropTypes.number,
+      plusMinus: PropTypes.number,
+      pim_per_game: PropTypes.number,
+      cap_hit: PropTypes.number,
+      cap_pct: PropTypes.number,
+      def_pass_rtg: PropTypes.number,
+      def_scoring_rtg: PropTypes.number,
+      def_block_rtg: PropTypes.number,
+      penalty_liability_rtg: PropTypes.number,
+      Defense_Skill: PropTypes.string,
+    }),
+    D2: PropTypes.shape({
+      goals: PropTypes.number,
+      assists: PropTypes.number,
+      points: PropTypes.number,
+      points_per_game: PropTypes.number,
+      plusMinus: PropTypes.number,
+      pim_per_game: PropTypes.number,
+      cap_hit: PropTypes.number,
+      cap_pct: PropTypes.number,
+      def_pass_rtg: PropTypes.number,
+      def_scoring_rtg: PropTypes.number,
+      def_block_rtg: PropTypes.number,
+      penalty_liability_rtg: PropTypes.number,
+      Defense_Skill: PropTypes.string,
+    }),
+    G: PropTypes.shape({
+      goalie_gaa_rtg: PropTypes.number,
+      goalie_save_rating: PropTypes.number,
+      Goalie_Skill: PropTypes.string,
+    }),
+  }).isRequired,
 };

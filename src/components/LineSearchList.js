@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getPlayerSeasons } from '../data/databaseCalls';
+import noImg from '../assets/noImg.png';
 
-export default function SearchList({ player, addPlayer }) {
+export default function LineSearchList({ player, addPlayer }) {
   const [formInput, setFormInput] = useState({
     year: '',
     position: '',
   });
+
+  const generateSearchId = (idString) => {
+    const rNum = Math.random().toString(36);
+    const key = `${idString}-${rNum}`;
+    return key;
+  };
 
   const [playerSeasons, setPlayerSeasons] = useState(null);
 
@@ -18,16 +25,19 @@ export default function SearchList({ player, addPlayer }) {
   }, []);
 
   useEffect(async () => {
+    let isMounted = true;
     if (player.position === 'Forward') formInput.position = 'LW';
     else if (player.position === 'Defenseman') formInput.position = 'D1';
     else if (player.position === 'Goalie') formInput.position = 'G';
     await getPlayerSeasons(player.id).then((years) => {
-      const uniqueYearList = removeDuplicatesFromArrayByProperty(years, 'yearid');
-      setPlayerSeasons(uniqueYearList);
-      const defaultYear = years.length > 0 ? years[0]?.yearid : null;
-      setFormInput((prevState) => ({ ...prevState, year: defaultYear }));
-    });
-  }, [player]);
+      if (isMounted) {
+        const uniqueYearList = removeDuplicatesFromArrayByProperty(years, 'yearid');
+        setPlayerSeasons(uniqueYearList);
+        const defaultYear = years.length > 0 ? years[0]?.yearid : null;
+        setFormInput((prevState) => ({ ...prevState, year: defaultYear }));
+      }
+    }); return () => { isMounted = false; };
+  }, []);
 
   const handleChange = (e) => {
     setFormInput((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
@@ -37,13 +47,13 @@ export default function SearchList({ player, addPlayer }) {
   return (
     <>{ formInput.year ? (
       <div className="line-search-card">
-        <div className="line-search-img-container"><img className="line-search-img" src={playerImgURL} alt={player.name} /></div>
+        <div className="line-search-img-container"><img className="line-search-img" src={playerImgURL} alt={player.name} onError={(e) => { e.target.onerror = null; e.target.src = noImg; }} /></div>
         <span className="line-search-card-span">{player.name}</span>
         <span className="line-search-card-span">{player.team}</span>
         <span className="line-search-card-span">{player.position}</span>
         <span className="line-search-card-span">
           <select id="year" name="year" className="year-dropdown line-dropdown" aria-label="Default select example" value={formInput.year} onChange={handleChange}>
-            {playerSeasons ? playerSeasons.map((year) => <option key={`${player.name}-${year.yearid}`} value={year.yearid}>{year.yearid}</option>) : ''}
+            {playerSeasons ? playerSeasons.map((year) => <option key={generateSearchId(year.yearid)} value={year.yearid}>{year.yearid}</option>) : ''}
           </select>
           <select id="position" name="position" className="pos-dropdown line-dropdown" aria-label="Default select example" value={formInput.position} onChange={handleChange}>
             {player.position === 'Defenseman'
@@ -74,11 +84,17 @@ export default function SearchList({ player, addPlayer }) {
         <button className="btn-shape" type="button" onClick={() => addPlayer(formInput.position, Number(player.id), formInput.year)}>Add</button>
       </div>
     ) : ''}
+      <hr className="line-search-card-hr" />
     </>
   );
 }
 
-SearchList.propTypes = {
-  player: PropTypes.shape().isRequired,
+LineSearchList.propTypes = {
+  player: PropTypes.shape({
+    name: PropTypes.string,
+    team: PropTypes.string,
+    position: PropTypes.string,
+    id: PropTypes.number,
+  }).isRequired,
   addPlayer: PropTypes.func.isRequired,
 };
