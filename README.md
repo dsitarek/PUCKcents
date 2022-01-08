@@ -7,8 +7,8 @@ There are tons of places to get player stats and salary data for almost every pr
 
 
 ## Features
-- As a user, you can be able to login with google.
-- As a user, you can be view your line combinations including specifics for:
+- As a user, you can login with google.
+- As a user, you can view your line combinations including specifics for:
   - Line stats
   - Combined data from players on the line to determine line effectiveness such as goals, assists, points per dollar etc.
 - As a user, you can add players to your line combinations.
