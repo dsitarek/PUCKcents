@@ -20,7 +20,8 @@ There are tons of places to get player stats and salary data for almost every pr
   - Past stats, salary info, and grading by season
 
 
-![capstoneSS](https://user-images.githubusercontent.com/82732748/146659443-94db42c9-2fcd-49a5-bed9-9d2440ac799b.png)
+- ![puckcents2](https://user-images.githubusercontent.com/82732748/151667421-cd6bb52a-5507-485c-ad29-884b83f55893.png)
+- ![puckcents1](https://user-images.githubusercontent.com/82732748/151667433-837aef27-c0b4-4a94-a58e-a89bc6625ee4.png)
 
 ## ERD
 ![ERD](https://user-images.githubusercontent.com/82732748/146465599-da53799b-e087-4aa1-8098-2d6ffe5b0125.png)
@@ -64,3 +65,5 @@ const getPlayerDetails = async (id, year) => {
 ## Contributors
 - [Daniel Sitarek](https://github.com/dsitarek) (App)
 - [Jonathan Lloyd](https://github.com/Jonathan-Lloyd) (Data)
+
+
