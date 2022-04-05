@@ -420,10 +420,6 @@ body {
   width: 100%;
 }
 
-.line-position-card {
-  height: 9em;
-}
-
 .line-update-save-btn {
   margin-left: .25em;
 }
@@ -498,4 +494,144 @@ body {
   border: 1px solid black;
   text-align: center;
   background-color: aliceblue;
+}
+
+@media only screen and (max-width:768px) {
+
+  .navbar-container {
+    position: auto;
+    margin-top: 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    text-align: center;
+    margin-bottom: .5em;
+  }
+
+  .nav-logo {
+    position: absolute !important;
+    margin-top: -5.4em !important;
+  }
+
+  .navbar-collapse {
+    background-color: rgba(84, 132, 175, 0.856);
+    margin-top: .5em;
+    padding-bottom: .25em;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .navbar-light .navbar-toggler {
+    background-color: rgba(0, 0, 0, 0.11);
+    margin-right: .2em;
+  }
+
+  .nav-item {
+    margin: auto;
+  }
+
+}
+
+
+@media only screen and (max-width:1200px) {
+
+  .login-btn-container {
+    margin: auto;
+  }
+
+  .line-edit-container {
+    flex-direction: column;
+    align-items: center;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .line-management-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0;
+  }
+
+  .search-bar-container {
+    width: auto;
+    min-width: auto;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2em;
+  }
+
+  .line-search-container {
+    min-width: none;
+    width: auto;
+    max-width: auto;
+  }
+
+  .line-search-form {
+    min-width: none;
+    width: auto;
+    max-width: auto;
+  }
+
+  .line-search-card-span {
+    min-width: auto;
+    max-width: 1px;
+    justify-content: center;
+  }
+  
+  .line-search-img-container {
+    min-width: auto;
+  }
+
+  .search-bar-container button {
+    margin: auto;
+  }
+
+  .line-search-bar {
+    width: 70%;
+    margin-bottom: .25em;
+  }
+
+  th {
+    display: table-row;
+  }
+
+  thead {
+    float: left;
+    flex-grow: 1;
+  }
+
+  tbody {
+    float: right;
+    flex-grow: 1;
+  }
+
+  tr {
+    display: table;
+    width: 100%;
+  }
+
+  td {
+    display: table-row;
+  }
+
+  .line-stats-table {
+    display: flex;
+    min-width: none;
+  }
+
+  .line-stats-container {
+    min-width: 0;
+    margin: .5em;
+  }
+
+  .app-container {
+    width: 100%;
+    min-width: auto;
+    max-width: 100%;
+  }
+
+  .line-management-container input {
+    width: auto;
+  }
 }
