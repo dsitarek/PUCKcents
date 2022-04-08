@@ -18,6 +18,7 @@ There are tons of places to get player stats and salary data for almost every pr
   - Current stats
   - Player Info such as height, weight, etc.
   - Past stats, salary info, and grading by season
+- As a user, be able to view on mobile devices.(In Progress)
 
 
 ![puckcents2](https://user-images.githubusercontent.com/82732748/151667421-cd6bb52a-5507-485c-ad29-884b83f55893.png)
