@@ -3,7 +3,7 @@ import { supabase } from '../api/auth';
 
 const statsApi = 'https://statsapi.web.nhl.com/api/v1';
 
-const currentSeason = '20212022';
+const currentSeason = '20222023';
 
 const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
   if (!accumulator.find((obj) => obj[prop] === currentValue[prop])) {
